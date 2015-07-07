@@ -1,0 +1,47 @@
+Graph-based model transformations have become in the last few years the main means
+for manipulating models in model-driven development. Their simplicity,
+their allowance for mathematical treatment, and the fact that they can natively
+manipulate domain-specific concepts expressed in metamodels, all make graph-based
+model transformations an excellent compromise between strong theoretical
+foundations and applicability to real-world problems.
+
+Because of the importance of model transformations both in the academic and the industrial arenas,
+their verification is of prime importance: firstly because
+the correctness of software built using model-driven development techniques
+typically relies on the correctness of many operations executed using model
+transformations; and secondly because tools that allow building verified
+software are in strong demand, especially in industry where quality and security
+standards have to be met.
+
+The tool we present can verifying these transformations with regard to pre- / post- condition patterns. A contract holds in the transformation if, for all input models where the contract's pre-condition
+is found, the contract's post-condition is also found in the
+corresponding output model (with optional traceability constraints between the
+elements of the input and output models). Otherwise, the contract does not hold.
+
+%For example, this paper considers the well-known \emph{Families-to-Persons}
+%transformation from the ATL zoo~\cite{atlZoo}, where mother(s), father(s),
+%daughter(s) and son(s) belonging to a family are translated into men and women
+%who are members of a community. One possible contract would try to assert that,
+%for any input model containing a family that includes a mother and a daughter,
+%a man is produced in the output community. We would expect the contract not to
+%hold for the \emph{Families-to-Persons} transformation, because there exist families that are composed of
+%only a mother and her daughter.
+%
+%The main contribution of the technique we present here is that, if
+%our prover demonstrates that the contract holds, then it will hold for any input
+%model given to the ATL model transformation. We can thus guarantee the
+%user can safely execute the model transformation without any need for additional
+%testing or runtime checking. Our contract language is based on pre- /
+%post-condition contracts, but also includes propositional logic operators
+%for combining contracts as we explain further ahead in this paper.
+
+We prove that contracts hold or not for transformations constructed in a model transformation language called
+DSLTrans~\cite{Barroca2011}.  A theoretical framework has been developed for
+the DSLTrans model transformation language in which pre- / post- condition
+contracts can be shown to hold for all input/output pairs resulting from executing a given
+DSLTrans model transformation, or to not hold for at least one of those
+input/output pairs~\cite{Lucio2014}. A fully automatic property prover based on
+this theory has been shown to be applicable to industrial
+problems~\cite{Selim2014}.
+
+

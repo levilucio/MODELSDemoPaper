@@ -1,0 +1,28 @@
+SyVOLT is a user-friendly Eclipse plugin to verify pre-/post- condition contracts on model transformations. The tool has a number of unique features, outlined below.
+
+\subsection{Integration with Eclipse}
+
+Providing our tool as an Eclipse plugin allows the user to continue working within a familiar environment, and allows for easy setup. As well, we are able to leverage the capabilities of Eclipse's modelling environments, as well as the EGL for the production of required tool artifacts.
+
+\subsection{Graphical Modelling}
+Both the transformation and the contracts are built using a graphical environment. This intuitive representation allows the user to quickly and easily visualize and construct the required contracts, without learning and debugging logical or mathematical expressions.
+
+\subsection{Handling of String Attributes}
+Our contracts can also contain reasoning over strings, such as the concatenation of different values.
+
+
+\subsection{Import from ATL}
+The ATL transformation language is commonly-used in both industry and academia. In order to support these users, we have developed a higher-order transformation that is able to automatically transform ATL transformations into our transformation language DSLTrans [CITE MODELS]. This allows the user to exhaustively prove contracts on ATL transformations.
+
+\subsection{Push-Button Proving}
+Once the transformation and the contracts of interest are created, one command can start the property proving process. This process will automatically create all required artifacts (as detailed in the following section), run the process, and then provide the results to the user within the Eclipse environment. This allows the user to continually stay within the Eclipse environment.
+
+\subsection{Proving Speed}
+
+Our technique is both valid and complete [CITE TECH REPORT], and will exhaustively prove whether a contract will hold for all possible input model to a transformation. However, our technique allows the proving process to take a relatively short amount of time. For example, our experiements on industrial transformations [CITE ATL] show that contracts can be verified within a few minutes. 
+
+\subsection{Production of Counter-Examples}
+
+An advantage of our technique is that a counter-example model for a particular contract is produced by the contract proving process. This allows the user to easily determine the error in the transformation and correct it. We suggest that these contracts be used analagous to 'test-driven development', in that development of a transformation is punctuated by contract proof.
+
+ 
