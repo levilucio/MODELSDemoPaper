@@ -51,53 +51,15 @@
 
 \begin{abstract}
 
-%The Atlas Transformation Language (ATL) is today a de-facto standard in
-%model-driven development. It is understood by the community that methods for
-%exhaustively verifying such transformations provide an important pillar for
-%achieving a stronger adoption of model-driven development in industry.
-%
-%In this paper we propose a method for verifying ATL model transformations by
-%translating them into DSLTrans, a transformation language with limited
-%expressiveness. Pre- / post- condition contracts are then verified on the
-%resulting DSLTrans specification using a symbolic-execution property prover.
-%
-%The technique we present in this paper is exhaustive for the declarative ATL
-%subset, meaning we are certain that if a contract holds, it will hold when any
-%input model is passed to the ATL transformation being checked. We explore the
-%scalability of our technique using a set of examples, including a model
-%transformation developed in collaboration with our industrial partner.
 
+We introduce SyVOLT, a plugin for the Eclipse development environment for the verification of structural contracts on model transformations. The plugin allows the user to build transformations in our transformation language DSLTrans using a visual editor. The pre-/post- condition contracts to be proved on the transformation can also be built in a similar interface.
 
-
-We introduce SyVOLT, an Eclipse plugin for the verification of structural contracts on model transformations. The plugin allows the user to build transformations within the Eclipse environment, in our transformation language DSLTrans. The pre-/post- condition contracts can also be built in a similar interface. The contract prover is exhaustive, meaning that if a contract holds, then the contract will hold for all input models of a transformation. The contract prover can also present in which input model counter-examples the property will fail.
-
+Our contract proving process is exhaustive, meaning that if a contract is said to hold, then the contract will hold for all input models of a transformation. If the contract will not hold, then the input model counter-examples where the contract fails will be presented.
 
 Demo: \url{https://www.youtube.com/watch?v=8PrR5RhPptY}
 
 
 
-% The Atlas Transformation Language (ATL) is today one of the most-used model
-% transformation languages and has become a de-facto standard in model-driven
-% development. It is understood by the community that methods for exhaustively
-% verifying such transformations provide an important pillar for achieving a
-% stronger adoption of model-driven development in industry.
-% Proposals for the verification of ATL transformations have arisen in the past
-% few years. However, these techniques are either based on non-exhaustive testing
-% or on proof methods that require human assistance and/or are not complete.
-%
-% In this paper we propose a method for exhaustively verifying ATL model
-% transformations by translating them into DSLTrans, a transformation language
-% with limited expressiveness. The properties of interest are then verified on the
-% resulting DSLTrans specification by using a symbolic-execution property prover.
-%
-% The technique we present in this paper is complete for the declarative ATL
-% subset, meaning we are certain that a pre- post-condition contract either holds
-% or does not hold for all input models of a given ATL transformation. Note that
-% as the metamodel language is the same for both transformations, these contracts
-% are applicable seamlessly in both the ATL and DSLTrans contexts. As well, we
-% explore the scalability of our technique by presenting experimental evidence of
-% applying the technique to a model transformation developed in collaboration with
-% our industrial partner.
 \end{abstract}
 
 

@@ -6,16 +6,9 @@
 
 Figure~\ref{fig:arch} shows the architecture of the SyVOLT tool. We will now briefly visit each component in turn, mentioning the main technologies and languages employed.
 
-\subsection{Eclipse Frontend}
-\begin{figure}
-\includegraphics[width=0.45\textwidth]{figures/eclipse_frontend}
-\caption{The transformation editor within Eclipse}
-\label{fig:eclipse_frontend}
-\end{figure}
+Everything is a model or a transformation.
 
-An example of editing a DSLTrans transformation within the Eclipse editor is found in Figure~\ref{fig:eclipse_frontend}. Note that this editor is based upon Eclipse's own modelling framework, providing stability and robustness. FIX FIX.
 
-A similar view is also used for users to define the contracts for their transformations.
 
 An Ant[CITE] script is then run from within the Eclipse environment. This script will orchestrate the following components.
 
@@ -24,13 +17,19 @@ An Ant[CITE] script is then run from within the Eclipse environment. This script
 For our contract prover, there are a number of artifacts that need to be generated. For example, typed graphs (in the Himesis format[CITE]) are generated from each rule and contract, using the Eclipse Generation Language (EGL). As well, the top-level Python scripts used to prove contracts are also generated through this method.
 
 This use of EGL allows for precise control over the artifacts that are produced, while taking a relatively short amount of time to create and debug.
+Model-to-text generation.
+
 
 
 \subsection{PyRamify}
 
 PyRamify is a Python script that takes as input Himesis graphs representing the rules in the transformation. Then, through the RAMification procedure [CITE RAM], matchers for each rule are produced. These matchers will then match over the rules, which allows the contract prover to determine how rules might execute over an input model. Rewriters are also produced with traceability information, which will properly apply the right-hand side of a rule when it matches.
 
-Currently, PyRamify is implemented as a Python script, as we were unable to implement automatic creation of higher-order artifacts in another modelling tool. This led to a number of difficulties as PyRamify mixes together a number of different abstraction levels.
+Currently, PyRamify is implemented as a Python script, as we were unable to implement automatic creation of higher-order artifacts in another modelling tool. We could not find technology to do higher-higher-order transformations. This is a limitation that we hope will be addressed. This led to a number of difficulties as PyRamify mixes together a number of different abstraction levels. 
+
+\subsection{Use of T-Core}
+
+T-Core, a blah blah blah, is used everywhere.
 
 
 \subsection{Path Condition Generation}
@@ -71,6 +70,7 @@ be isomorphically found in the path condition but its post-
 condition cannot. This produces a counter-example for the contract, which we then present to the user. Finally, a contract holds for a transformation if it holds for all of its generated path conditions. These results
 are formally described in~\cite{Lucio2014}.
 
+A contract holds in the transformation if, for all input models where the contract's pre-condition is found, the contract's post-condition is also found in the corresponding output model (with optional traceability constraints between the elements of the input and output models). Otherwise, the contract does not hold.
 
 
 

@@ -1,14 +1,24 @@
-SyVOLT is a user-friendly Eclipse plugin to verify pre-/post- condition contracts on model transformations. The tool has a number of unique features, outlined below.
+SyVOLT is a user-friendly Eclipse plugin to verify pre-/post- condition contracts on model transformations specified in the DSLTrans transformation language. The tool has a number of unique features, outlined below.
 
 \subsection{Integration with Eclipse}
 
-Providing our tool as an Eclipse plugin allows the user to continue working within a familiar environment, and allows for easy setup. As well, we are able to leverage the capabilities of Eclipse's modelling environments, as well as the EGL for the production of required tool artifacts.
+Providing our tool as an Eclipse plugin allows the user to work within a robust and popular development environment, while still allowing for easy setup of the prover. We are able to leverage the capabilities of Eclipse's graphical modelling evironments for artifact construction, as well as the Eclipse Generation Language (EGL) for the model-to-text production of required tool artifacts.
+
+\subsection{Eclipse Frontend}
+\begin{figure}
+\includegraphics[width=0.45\textwidth]{figures/eclipse_frontend}
+\caption{The transformation editor within Eclipse}
+\label{fig:eclipse_frontend}
+\end{figure}
+
+Figure~\ref{fig:eclipse_frontend} shows the Eclipse frontend, where a user can edit a DSLTrans transformation within the Eclipse editor. A similar view is also used for users to define the contracts for their transformations. Note that these editors are based within the model creation framework FIX FIX.
 
 \subsection{Graphical Modelling}
-Both the transformation and the contracts are built using a graphical environment. This intuitive representation allows the user to quickly and easily visualize and construct the required contracts, without learning and debugging logical or mathematical expressions.
+Both the transformation and the contracts are built using a graphical environment. This intuitive representation allows the user to quickly and easily visualize and construct the required contracts. This is in contrast to  the logical or mathematical expression approach which is required by other verification techniques.
 
 \subsection{Handling of String Attributes}
-Our contracts can also contain reasoning over strings, such as the concatenation of different values.
+The DSLTrans transformations and contracts are built upon typed graphs. 
+Our contract prover is able to reason over these graphs to prove contracts. An example of this would be in the Families-To-Persons transformation from the ATL zoo [CITE]. In this transformation, the name for a person in the output graph is a concatenation of two strings from elements in the input graph.
 
 
 \subsection{Import from ATL}
@@ -25,4 +35,11 @@ Our technique is both valid and complete [CITE TECH REPORT], and will exhaustive
 
 An advantage of our technique is that a counter-example model for a particular contract is produced by the contract proving process. This allows the user to easily determine the error in the transformation and correct it. We suggest that these contracts be used analagous to 'test-driven development', in that development of a transformation is punctuated by contract proof.
 
+\subsection{Input Independence and Exhaustiveness}
+
+Our technique is valid and complete. Gives guaratnees over all input models for the transformation.
+
+\subsection{Model-Driven Development}
+
+Everything is modelled. Model transformations, and tooling.
  
