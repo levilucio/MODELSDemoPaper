@@ -8,34 +8,31 @@
 Figure~\ref{fig:arch} shows the architecture of the SyVOLT tool. We will now briefly visit each component in turn, mentioning the main technologies and languages employed.
 
 
-One principle of the Modelling, Design, and Simulation Lab is that all tools and processes should be explicitly modelled at an appropriate abstraction level. The next section will describe how we have applied this practice 
+One principle of the Modelling, Design, and Simulation Lab is that all tools and processes should be explicitly modelled at an appropriate abstraction level. This practice ensures that only the essential complexity is retained in each step.
 
-Everything is modelled. Model transformations, and tooling.
+In particular, each artifact and transformation in the contract prover is explicitly modelled. EXPAND
 
-Everything is a model or a transformation.
+\subsection{Eclipse Frontend}
 
+As mentioned, the modelling editor in Eclipse is used to create the transformation, and the contracts to prove.
 
-
-An Ant[CITE] script is then run from within the Eclipse environment. This script will orchestrate the following components.
+An Ant [CITE] script is then run from within the Eclipse environment. This script will orchestrate the following components, such as copying files and running the artifact generation scripts.
 
 
 \subsection{Generating Artifacts}
-For our contract prover, there are a number of artifacts that need to be generated. For example, typed graphs (in the Himesis format[CITE]) are generated from each rule and contract, using the Eclipse Generation Language (EGL). As well, the top-level Python scripts used to prove contracts are also generated through this method.
+For our contract prover, there are a number of artifacts that need to be generated. For example, typed graphs in the Himesis format [CITE] are generated from each rule and contract using Eclipse Generation Language (EGL) templates. As well, the top-level Python scripts used to execute the contract prover are also generated through this method. The output of these top-level scripts will be presented to the user as the result of whether the contract holds or not.
 
-This use of EGL allows for precise control over the artifacts that are produced, while taking a relatively short amount of time to create and debug.
-Model-to-text generation.
-
-
+This use of model-to-text generation allows for precise control over the artifacts that are produced, while also taking a relatively short amount of time to create and debug.
 
 \subsection{PyRamify}
 
 PyRamify is a Python script that takes as input Himesis graphs representing the rules in the transformation. Then, through the RAMification procedure [CITE RAM], matchers for each rule are produced. These matchers will then match over the rules, which allows the contract prover to determine how rules might execute over an input model. Rewriters are also produced with traceability information, which will properly apply the right-hand side of a rule when it matches.
 
-Currently, PyRamify is implemented as a Python script, as we were unable to implement automatic creation of higher-order artifacts in another modelling tool. We could not find technology to do higher-higher-order transformations. This is a limitation that we hope will be addressed. This led to a number of difficulties as PyRamify mixes together a number of different abstraction levels. 
+Currently, PyRamify is implemented as a Python script, as we were unable to implement automatic creation of higher-order artifacts in another modelling tool. This is a limitation that we hope will be addressed in the future, as the mix of different abstraction level led to a number of technical difficulties.
 
 \subsection{Use of T-Core}
 
-T-Core, a blah blah blah, is used everywhere.
+The contract prover makes heavy use of T-Core [CITE], which is a framework of transformation primitives. For example, the T-Core Matcher and Rewriter is scheduled by Python in order to perform rewriting on a graph in an efficient manner.
 
 
 \subsection{Path Condition Generation}
@@ -44,6 +41,7 @@ Once the required artifacts have been produced, the prover moves onto the path c
 path condition will represent a set of concrete executions
 of the transformation, where each concrete execution is an
 input/ouput pair.
+
 Our proving algorithm begins by generating one empty
 path condition, representing the case where no rules in the
 transformation have executed. Then, each rule in each layer
@@ -77,9 +75,5 @@ condition cannot. This produces a counter-example for the contract, which we the
 are formally described in~\cite{Lucio2014}.
 
 A contract holds in the transformation if, for all input models where the contract's pre-condition is found, the contract's post-condition is also found in the corresponding output model (with optional traceability constraints between the elements of the input and output models). Otherwise, the contract does not hold.
-
-
-
-
 
 
