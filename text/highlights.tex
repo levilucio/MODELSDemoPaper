@@ -59,8 +59,10 @@ transform declarative ATL transformations into our transformation language
 DSLTrans~\cite{Oakes}. This allows the user to exhaustively prove contracts on
 ATL transformations.
 
-\subsection{Handling of String Attributes}
-The DSLTrans transformations and contracts are built upon typed graphs.
+\subsection{Symbolic Execution}
+We apply the symbolic execution technique clasically used for program
+verification, to the verification of model transformations. The DSLTrans
+transformations and contracts are built upon typed graphs.
 Our contract prover is able to reason over these graphs to prove contracts. An
 example of this would be in the Families-To-Persons transformation from the ATL
 zoo [CITE]. In this transformation, the name for a person in the output graph is
