@@ -70,8 +70,9 @@ a concatenation of two strings from elements in the input graph. Our contract
 prover can prove that this concatenation will be valid in all cases.
 
 \subsection{Push-Button Proving}
-Once the transformation and the contracts of interest are created, one command
-will start the property proving process. This process will automatically create
+Hidden formal methods: providing the transformation and the contract is
+sufficient for the tool to automatically provide formal guarantees of correctness. Once the transformation
+and the contracts of interest are created, one command will start the property proving process. This process will automatically create
 all required artifacts (as detailed in the following section), run the process,
 and then provide the results to the user within the Eclipse environment, as seen
 in Figure~\ref{fig:output}. This allows the user to continually stay within the
@@ -92,11 +93,15 @@ a transformation, as seen in~\cite{Lucio2014}.
 
 \subsection{Proving Speed}
 
- Even though our technique is exhaustive, our approach takes a relatively short
- amount of time to prove contracts. For example, our experiments on industrial
- transformations~\cite{Oakes} show that contracts can be verified within a few
- minutes. \cite{Selim2014} demonstrates that our prover is faster than similar
- mathematical approaches.
+SyVOLT scales to transformations of practical interest. This has been probed
+empirically by applying it to DSLTrans transformations up to X rules, and ATL
+transformations up to Y rules. The average size of a DSLTrans transformation is
+around XX rules (cite something here) and of ATL rules around YY rules. Even
+though our technique is exhaustive, our approach takes a relatively short amount
+of time to prove contracts. For example, our experiments on industrial
+transformations~\cite{Oakes} show that contracts can be verified within a few
+minutes. \cite{Selim2014} demonstrates that our prover is faster than similar
+approaches based on SAT solvers.
 
 \subsection{Production of Counter-Examples}
 
