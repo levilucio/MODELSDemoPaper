@@ -14,7 +14,22 @@ to textual, and this makes the interaction with SyVolt easier since the modeler
 can use the model editor that is most convenient. Internally, SyVolt uses 
 the Himesis format [CITE] to represent models.
 
-\subsection{Eclipse Frontend}
+\subsection{Model Driven Developed GUI}
+
+To take advantage of the productivity promised by MDD, we used a language called
+Eugenia[CITE] to generate the SyVolt contract editor shown in
+Figure~\ref{fig:eclipse_frontend}.
+
+Eugenia consists of a set of annotations that are attached to the metamodel of
+SyVolt contracts and, without any extra information, generates a set of eclipse
+Graphical Modeling Framework (GMF) models.
+Each GMF model is concerned with one aspect of the editor and can be further
+customized to our needs.
+For instance, the generated GMF tooling model prescribes the kind of tools that
+will be available in the toolbox (shown in the right of
+Figure~\ref{fig:eclipse_frontend}), their icons, labels, etc\ldots From the set
+of GMF models, a set of eclipse plugins are synthetize that, when installed,
+make up the graphical editor\footnote{A fixed structure textual editor is also provided but this editor lacks several usability improvements and, hence, is not appropriate to model SyVolt contracts.}.
 
 \begin{figure}
 \centering
@@ -23,17 +38,18 @@ the Himesis format [CITE] to represent models.
 \label{fig:eclipse_frontend}
 \end{figure}
 
-Figure~\ref{fig:eclipse_frontend} shows the Eclipse frontend, where a user can
-edit a DSLTrans transformation within the Eclipse editor. A similar view is also
-used for users to define the contracts for their transformations. Note that
-these editors are based within the model creation framework FIX FIX.
+With this approach, SyVolt editor was developed in about 4 man-hours.
 
 \subsection{Graphical Modelling}
-Both the transformation and the contracts are built using a graphical
-environment. This intuitive representation allows the user to quickly and easily
-visualize and construct the required contracts. This is in contrast to  the
-logical or mathematical expression approach which is required by other
-verification techniques.
+
+Due to the graph-like structure of the pre and post conditions of contracts, the
+visual representation of the contract in SyVolt editor allows the user to
+quickly build and intuitively understand their meaning.
+If a textual (logical or mathematical) editor where to be used, the user would
+need an extra system of identifiers to correctly prescribe the structure of contracts.
+
+The visual representation of a contract has all the necessary information to derive the correct 
+logical expression to be used by the internal SyVolt prover.
 
 \subsection{Import from ATL}
 The Atlas Transformation Language (ATL) is commonly-used in both industry and
