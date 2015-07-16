@@ -91,7 +91,7 @@ Our technique will exhaustively prove whether a contract will hold for all
 possible input models to a transformation. This allows us to exhaustively verify
 a transformation, as seen in~\cite{Lucio2014}.
 
-\subsection{Proving Speed}
+\subsection{Proving Speed / Scalability}
 
 SyVOLT scales to transformations of practical interest. This has been probed
 empirically by applying it to DSLTrans transformations up to X rules, and ATL
@@ -101,7 +101,10 @@ though our technique is exhaustive, our approach takes a relatively short amount
 of time to prove contracts. For example, our experiments on industrial
 transformations~\cite{Oakes} show that contracts can be verified within a few
 minutes. \cite{Selim2014} demonstrates that our prover is faster than similar
-approaches based on SAT solvers.
+approaches based on SAT solvers. Our approach does not depend on an external
+solver and we have implemented the symbolic execution engine from the ground up,
+based on model driven techniques, which allowed us to optimize for space and
+time economy.
 
 \subsection{Production of Counter-Examples}
 
