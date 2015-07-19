@@ -23,9 +23,23 @@ Present:
 
 \subsection{Eclipse Frontend}
 
-As mentioned, the modelling editor in Eclipse is used to create the transformation, and the contracts to prove.
+The SyVolt contract editor is realized by a set of Eclipse plugins.
+The runtime architecture of this editor is the typical architecture of a Graphical Modeling Framework (GMF) \footnote{\url{http://www.eclipse.org/modeling/gmp/}} editor. 
+What is important is how this editor was developed.
 
-An Ant [CITE] script is then run from within the Eclipse environment. This script will orchestrate the following components, such as copying files and running the artifact generation scripts.
+As mentioned in Section~\ref{sec:mdd_gui}, we used Eugenia[CITE] to quickly develop the SyVolt contract editor shown in Figure~\ref{fig:eclipse_frontend}.
+
+Eugenia consists of a set of annotations that are attached to the metamodel of
+SyVolt contracts. An annotation can, for instance, specify that an atomic contract will be drawn as a rounded rectangle, with a specific color and a label that is equal to the name attribute of the contract.
+The annotations are not very expressive but they contain the essential information to generate a set of GMF models that, ultimately, describe a basic usable graphical editor. 
+
+Each generated GMF model is concerned with one aspect of the editor and can be further customized to our needs. GMF models are much more expressive than the Eugenia annotations.
+For instance, the generated GMF tooling model prescribes the kind of tools that
+will be available in the toolbox (shown in the right of
+Figure~\ref{fig:eclipse_frontend}), their icons, labels, etc\ldots
+
+From the set of GMF models, a set of eclipse plugins are synthesized.
+These make up SyVolt graphical editor\footnote{A fixed structure textual editor is also provided but this editor lacks several usability improvements and, hence, is not appropriate to model SyVolt contracts.}.
 
 
 \subsection{Generating Artifacts}
