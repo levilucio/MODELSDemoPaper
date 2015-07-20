@@ -5,12 +5,78 @@
 \label{fig:arch}
 \end{figure*}
 
-Figure~\ref{fig:arch} shows the architecture of the SyVOLT tool. We will now briefly visit each component in turn, mentioning the main technologies and languages employed.
+One principle of the Modelling, Design, and Simulation Lab is that all tools and
+processes should be explicitly modelled at an appropriate abstraction level.
+This practice goes in the direction of ensuring that essential
+complexity is the main object of software development and that accidental
+complexity is mitigated as much as possible.
+
+SyVOLT's codebase has been developed by applying these principles. We have used
+available model-driven development technology as much as possible. In
+particular, we have made it such that representations of DSLTrans transformations
+and SyVOLT contracts manipulated by the proof engine are models, as well as the
+symbolic executions produced for a given DSLTrans model transformation (called
+\emph{path conditions}). Additionally, given the operations required to build a
+contract proof are model manipulations, they are also encoded as model
+transformations~\cite{LucioVang}.\\
+
+The following model-driven development tools have been used either as part of
+SyVOLT's codebase, or for SyVOLT's development:
+\begin{itemize}
+  \item \textbf{AToM$^3$}~\cite{}: AToM$^3$ is a meta-editor for model-driven
+  development. It has been developed at the MSDL and is used for constructing,
+  models and metamodels, and for automatically synthesising modeling
+  environments.
+  AToM$^3$ has been extensively used to build, edit and visualize models and
+  contracts during the initial stages of the construction of SyVOLT.\\
+  \item \textbf{Himesis}~\cite{}: Himesis is a typed graph representation
+  format, built upon the open-source igraph~\cite{} library. Himesis has been
+  developed at the MSDL and is used to represent all models manipulated by SyVOLT when a proof is being built.
+  Himesis is also used to represent the metamodels that allow building the
+  models used inside SyVOLT. Note that, while metamodels during the construction
+  of SyVOLT to provide exemplar data for the algorithm, in the finished
+  SyVOLT all models are automatically generated and metamodels only exist
+  implicitely.\\
+  \item \textbf{T-Core}~\cite{}: T-Core is a collection of model transformation
+  primitives developed at the MSDL, allowing fine-grained manipulation of
+  models. It was initially built as a means to rapidly build
+  high-level model transformation languages. T-Core has been used to
+  successfully deconstruct and reconstruct several mainstream model transformation
+  languages. The main operations of T-Core are model \emph{matching}, model
+  \emph{rewriting} and \emph{iterating} through a set of match sites in a model.
+  The level of control in model manipulation together with T-Core's speed and
+  scalability when treating large models suited well our needs when implementing
+  the property proof algorithm described in~\cite{Lucio2014}. Note that because
+  T-Core is also an explicitely modeled model transformation language, a T-Core
+  model transformation rule is also a Himesis model.\\
+  \item \textbf{EMF} (Eclipse Modelling Framework)~\cite{}: SyVOLT makes use of
+  EMF's E-Core format for the XMI representation of DSLTrans transformations
+  and SyVOLT's contracts within the Eclipse editors. Note that EMF is only used
+  in the Eclipse front-end, and that models in those formats are coverted into
+  Himesis such that the contract prover engine can compute the proofs.\\
+  \item \textbf{EGL} (Epsilon Generation Language)~\cite{}: Converting E-Core
+  models into Himesis models is achieved using EGL, a language from the Epsilon family. This
+  model-to-text transformation language is used to parse the E-Core models of
+  a DSLTrans model transformation and of the contracts to be proved, in order
+  to produce a number of Python files containing the models and model
+  transformation rules in the Himesis format that are needed to automatically
+  perform the required proofs.
+
+\end{itemize}
+
+Elements of the
+architecture that could not be built using model driven tools (for lack of
+technological availability) have been developed using model-driven principles.
 
 
-One principle of the Modelling, Design, and Simulation Lab is that all tools and processes should be explicitly modelled at an appropriate abstraction level. This practice ensures that only the essential complexity is retained in each step.
 
-In particular, each artifact and transformation in the contract prover is explicitly modelled. EXPAND
+Figure~\ref{fig:arch} shows the architecture of the SyVOLT tool. We will now
+briefly visit each component in turn, mentioning the main technologies and
+languages employed.
+
+
+In particular, each artifact and transformation in the contract prover is
+explicitly modelled. EXPAND
 
 Present:
 \begin{itemize}
@@ -20,7 +86,10 @@ Present:
   \item Flow
 \end{itemize}
 
-The contract prover makes heavy use of T-Core [CITE], which is a framework of transformation primitives. For example, the T-Core Matcher and Rewriter is scheduled by Python in order to perform rewriting on a graph in an efficient manner.
+The contract prover makes heavy use of T-Core [CITE], which is a framework of
+transformation primitives. For example, the T-Core Matcher and Rewriter is
+scheduled by Python in order to perform rewriting on a graph in an efficient
+manner.
 
 
 \subsection{Eclipse Frontend (1)}

@@ -2,20 +2,6 @@ SyVOLT is a user-friendly Eclipse plugin to verify pre-/post- condition
 contracts on model transformations specified in the DSLTrans transformation
 language. The tool has a number of unique features, outlined below.
 
-\subsection{Push-Button Proving}
-SyVOLT is a verification tool that provides formal guarantees of correctness of
-a model transformation. The proving process is fully automatic and the all
-formal details are completely hidded from the user, who only needs to specify a
-set of contracts for the transformation being verified. Once the transformation and the
-contracts of interest are created, one command will start the property proving
-process. This process will automatically create all required artifacts (as
-detailed in the following section), run the process, and then provide the
-results to the user within the Eclipse environment, as seen in
-Figure~\ref{fig:output}. This allows the user to continually stay within the
-Eclipse environment, which is where he develops the contracts and the model
-transformations.
-
-
 \subsection{Graphical Modelling of Model Transformation Contracts}
 
 SyVOLT proves pre-/post-condition contracts hold for a transformation. Such
@@ -33,6 +19,19 @@ contracts.\levi{Claudio, I don't understand this sentence}
 
 The visual representation of a contract has all the necessary information to derive the correct 
 logical expression to be used by the internal SyVolt prover.
+
+\subsection{Push-Button Proofs}
+SyVOLT is a verification tool that provides formal guarantees of correctness of
+a model transformation. The proving process is fully automatic and the all
+formal details are completely hidded from the user, who only needs to specify a
+set of contracts for the transformation being verified. Once the transformation and the
+contracts of interest are created, one command will start the property proving
+process. This process will automatically create all required artifacts (as
+detailed in the following section), run the process, and then provide the
+results to the user within the Eclipse environment, as seen in
+Figure~\ref{fig:output}. This allows the user to continually stay within the
+Eclipse environment, which is where he develops the contracts and the model
+transformations.
 
 \subsection{Based on Symbolic Execution}
 
@@ -92,8 +91,9 @@ minutes. In Gehan Selim's PhD thesis~\cite{Selim2015}
 further evidence of SyVOLT's speed is given when verifying an
 academically developed transformation for giving semantics to the UML-RT language in terms of
 the Kiltera process language~\cite{PosseDingel2014}. SyVOLT's symbolic execution
-engine is fully homegrown and does not depend on third-party solvers. Despite
-the large effort needed to build the codebase, we have been able to
+engine is fully homegrown~\cite{LucioVang} and does not depend on third-party
+solvers.
+Despite the large effort needed to build the codebase, we have been able to
 increasingly optimize the engine for both space and time economy.
 \cite{Selim2014} demonstrates that our prover is substantially faster than
 similar approaches based on SAT solvers.
