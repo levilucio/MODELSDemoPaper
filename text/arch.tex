@@ -1,9 +1,9 @@
-\begin{figure}
+\begin{figure*}
 \centering
-\includegraphics[width=0.45\textwidth]{figures/syvolt_arch}
+\includegraphics[width=0.8\textwidth]{figures/syvolt_arch}
 \caption{The architecture of the SyVOLT tool}
 \label{fig:arch}
-\end{figure}
+\end{figure*}
 
 Figure~\ref{fig:arch} shows the architecture of the SyVOLT tool. We will now briefly visit each component in turn, mentioning the main technologies and languages employed.
 
@@ -20,8 +20,10 @@ Present:
   \item Flow
 \end{itemize}
 
+The contract prover makes heavy use of T-Core [CITE], which is a framework of transformation primitives. For example, the T-Core Matcher and Rewriter is scheduled by Python in order to perform rewriting on a graph in an efficient manner.
 
-\subsection{Eclipse Frontend}
+
+\subsection{Eclipse Frontend (1)}
 
 The SyVolt contract editor is realized by a set of Eclipse plugins.
 The runtime architecture of this editor is the typical architecture of a Graphical Modeling Framework (GMF) \footnote{\url{http://www.eclipse.org/modeling/gmp/}} editor. 
@@ -42,23 +44,18 @@ From the set of GMF models, a set of eclipse plugins are synthesized.
 These make up SyVolt graphical editor\footnote{A fixed structure textual editor is also provided but this editor lacks several usability improvements and, hence, is not appropriate to model SyVolt contracts.}.
 
 
-\subsection{Generating Artifacts}
+\subsection{Generating Artifacts (2)}
 For our contract prover, there are a number of artifacts that need to be generated. For example, typed graphs in the Himesis format [CITE] are generated from each rule and contract using Eclipse Generation Language (EGL) templates. As well, the top-level Python scripts used to execute the contract prover are also generated through this method. The output of these top-level scripts will be presented to the user as the result of whether the contract holds or not.
 
 This use of model-to-text generation allows for precise control over the artifacts that are produced, while also taking a relatively short amount of time to create and debug.
 
-\subsection{PyRamify}
+\subsection{PyRamify (3)}
 
 PyRamify is a Python script that takes as input Himesis graphs representing the rules in the transformation. Then, through the RAMification procedure [CITE RAM], matchers for each rule are produced. These matchers will then match over the rules, which allows the contract prover to determine how rules might execute over an input model. Rewriters are also produced with traceability information, which will properly apply the right-hand side of a rule when it matches.
 
 Currently, PyRamify is implemented as a Python script, as we were unable to implement automatic creation of higher-order artifacts in another modelling tool. This is a limitation that we hope will be addressed in the future, as the mix of different abstraction level led to a number of technical difficulties.
 
-\subsection{Use of T-Core}
-
-The contract prover makes heavy use of T-Core [CITE], which is a framework of transformation primitives. For example, the T-Core Matcher and Rewriter is scheduled by Python in order to perform rewriting on a graph in an efficient manner.
-
-
-\subsection{Path Condition Generation}
+\subsection{Path Condition Generation (4)}
 
 Once the required artifacts have been produced, the prover moves onto the path condition generation step.  Each
 path condition will represent a set of concrete executions
@@ -81,7 +78,7 @@ executions. This is further described in~\cite{Lucio2014}, along with a
 formal discussion of the validity and completeness of this
 work.
 
-\subsection{Contract Proof}
+\subsection{Contract Proof (5)}
 
 Once the path conditions are generated, we can then begin the proof for each contract.
 
