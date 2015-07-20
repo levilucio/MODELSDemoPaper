@@ -3,23 +3,55 @@ contracts on model transformations specified in the DSLTrans transformation
 language. The tool has a number of unique features, outlined below.
 
 \subsection{Push-Button Proving}
-Hidden formal methods: providing the transformation and the contract is
-sufficient for the tool to automatically provide formal guarantees of correctness. Once the transformation
-and the contracts of interest are created, one command will start the property proving process. This process will automatically create
-all required artifacts (as detailed in the following section), run the process,
-and then provide the results to the user within the Eclipse environment, as seen
-in Figure~\ref{fig:output}. This allows the user to continually stay within the
-Eclipse environment, which is where he develops the contracts and the model transformations.
+SyVOLT is a verification tool that provides formal guarantees of correctness of
+a model transformation. The proving process is fully automatic and the all
+formal details are completely hidded from the user, who only needs to specify a
+set of contracts for the transformation being verified. Once the transformation and the
+contracts of interest are created, one command will start the property proving
+process. This process will automatically create all required artifacts (as
+detailed in the following section), run the process, and then provide the
+results to the user within the Eclipse environment, as seen in
+Figure~\ref{fig:output}. This allows the user to continually stay within the
+Eclipse environment, which is where he develops the contracts and the model
+transformations.
+
+
+\subsection{Graphical Modelling of Model Transformation Contracts}
+
+SyVOLT proves pre-/post-condition contracts hold for a transformation. Such
+contracts establish relations between patterns ocurring in input and output
+models of a model transformation. If a contract holds, then a formal guarantee
+exists that whenever an input model contains the pattern specified in the
+pre-condition of the contract, the output model contains the pattern specified
+in the post-condition part of the contract and any traceability relations
+between the two. Due to the graph-like structure of the pre and post conditions
+of contracts, the visual representation of the contract in SyVolt editor allows
+the user to quickly build and intuitively understand their meaning.
+If a textual (logical or mathematical) editor where to be used, the user would
+need an extra system of identifiers to correctly prescribe the structure of
+contracts.\levi{Claudio, I don't understand this sentence}
+
+The visual representation of a contract has all the necessary information to derive the correct 
+logical expression to be used by the internal SyVolt prover.
 
 \subsection{Based on Symbolic Execution}
-We apply the symbolic execution technique classically used for program
-verification, to the verification of model transformations. The DSLTrans
-transformations and contracts are built upon typed graphs.
-Our contract prover is able to reason over these graphs to prove contracts. An
-example of this would be in the Families-To-Persons transformation from the ATL
-zoo [CITE]. In this transformation, the name for a person in the output graph is
-a concatenation of two strings \cgg{instead of ''strings``, should be ''attributes``} from elements in the input graph. Our contract
-prover can prove that this concatenation will be valid in all cases.
+
+Our technique shares its principles with symbolic execution, a
+classically used method to verify code. The underlying idea entails building a
+finite representation of the (infinite) set of model transformation
+computations, such that properties of interest can be proved on such finite
+representation and extrapolated to the infinite set of possible computations.
+
+Our model transformation verification technique relies on typed graphs as the
+means to internally represent both symbolic executions and contracts. SyVOLT
+then reasons over these graphs to build a proof that contracts hold or do not
+hold. Note that by using a typed graph representation, our technique can prove
+contracts that include contraints on how the attributes of the input and output
+models. An example of this would be in the Families-To-Persons transformation
+from the ATL zoo [CITE]. In this transformation, the name for a person in the
+output graph is a concatenation of two strings \cgg{instead of ''strings``,
+should be ''attributes``} from elements in the input graph. Our contract prover
+can prove that this concatenation will be valid in all cases.
 
 \begin{figure}
 \centering
@@ -28,41 +60,51 @@ prover can prove that this concatenation will be valid in all cases.
 \label{fig:output}
 \end{figure}
 
-\subsection{Input Independence and Exhaustiveness}
+\subsection{Input Independence and Exhaustiveness} 
 
-Our technique will exhaustively prove whether a contract will hold for all
-possible input models to a transformation. This allows us to exhaustively verify
-a transformation, as seen in~\cite{Lucio2014}.
+Our technique is exhaustive, in the sense that whenever a contract holds, it
+will hold for all possible input models to a transformation. SyVOLT thus proves
+contracts in an input-independent manner, relying only on the specification of
+the transformation. The soundness and completeness of our technique is described
+in~\cite{Lucio2014}.
 
-\subsection{Proving Speed / Scalability}
+\subsection{Proving Contracts about ATL Model Transformations}
+The Atlas Transformation Language (ATL) is commonly-used in both industry and
+academia applications. In order to extend our approach into these domains, we
+have developed a higher-order transformation that is able to automatically
+transform declarative ATL transformations into our transformation language
+DSLTrans~\cite{Oakes}. This allows the user to also prove contracts on
+ATL transformations.
 
-SyVOLT scales to transformations of practical interest. This has been probed
-empirically by applying it to DSLTrans transformations up to X rules, and ATL
-transformations up to Y rules. The average size of a DSLTrans transformation is
-around XX rules (cite something here) and of ATL rules around YY rules. Even
-though our technique is exhaustive, our approach takes a relatively short amount
-of time to prove contracts. For example, our experiments on industrial
+\subsection{Scalability and Speed}
+
+We have some evidence that SyVOLT scales to transformations of practical
+interest. This has been empirically shown by applying it to DSLTrans
+transformations up to over 60 rules, and ATL transformations up to 13
+rules~\cite{Oakes}. From our own experience with DSLTrans, the size of a
+DSLTrans transformations varies widely, with the average size ranging from 10 up
+to 50 rules. The average size of an ATL transformation is around 20 rules. [cite
+Manuel's paper, should we keep this?].
+Even though our technique is exhaustive, our approach takes relatively short
+amounts of time to prove contracts. For example, our experiments with industrial
 transformations~\cite{Oakes} show that contracts can be verified within a few
-minutes. \cite{Selim2014} demonstrates that our prover is faster than similar
-approaches based on SAT solvers. Our approach does not depend on an external
-solver and we have implemented the symbolic execution engine from the ground up,
-based on model driven techniques, which allowed us to optimize for space and
-time economy.
+minutes. In Gehan Selim's PhD thesis~\cite{Selim2015}
+further evidence of SyVOLT's speed is given when verifying an
+academically developed transformation for giving semantics to the UML-RT language in terms of
+the Kiltera process language~\cite{PosseDingel2014}. SyVOLT's symbolic execution
+engine is fully homegrown and does not depend on third-party solvers. Despite
+the large effort needed to build the codebase, we have been able to
+increasingly optimize the engine for both space and time economy.
+\cite{Selim2014} demonstrates that our prover is substantially faster than
+similar approaches based on SAT solvers.
 
-\subsection{Graphical Modelling of Model Transformation Contracts}
-
-Due to the graph-like structure of the pre and post conditions of contracts, the
-visual representation of the contract in SyVolt editor allows the user to
-quickly build and intuitively understand their meaning.
-If a textual (logical or mathematical) editor where to be used, the user would
-need an extra system of identifiers to correctly prescribe the structure of contracts.
-
-The visual representation of a contract has all the necessary information to derive the correct 
-logical expression to be used by the internal SyVolt prover.
 
 \subsection{Production of Counter-Examples}
 
-When a contract is proved to be violated by a given model transformation, it is useful to also provide an input model - called a \emph{counter-example} - so that the user can execute the model transformation with that input and verify that indeed it violates the contract.
+When a contract is proved to be violated by a given model transformation, it is
+useful to also provide an input model - called a \emph{counter-example} - so
+that the user can execute the model transformation with that input and verify
+that indeed it violates the contract.
 
 An advantage of out technique is that the counter-example produced by SyVolt
 describes a family of input models that violate the contract. This means that
@@ -74,7 +116,8 @@ to violate the contract?} Thus, the user can easily determine the error in the
 transformation and correct it. We suggest that this supports a transformation
 development method analogous to 'test-driven development'. In this method,
 development would be routinely punctuated by contract proof in order to catch
-errors early and store test cases - the counter examples produced - to be used in the future.
+errors early and store test cases - the counter examples produced - to be used
+in the future.
 
 
 \subsection{Integration with Eclipse}
@@ -104,13 +147,7 @@ With this approach, the SyVolt editor was developed in about 4 man-hours.
 \label{fig:eclipse_frontend}
 \end{figure}
 
-\subsection{Proving Contracts about ATL Model Transformations}
-The Atlas Transformation Language (ATL) is commonly-used in both industry and
-academia applications. In order to extend our approach into these domains, we
-have developed a higher-order transformation that is able to automatically
-transform declarative ATL transformations into our transformation language
-DSLTrans~\cite{Oakes}. This allows the user to exhaustively prove contracts on
-ATL transformations.
+
 
 
  
