@@ -1,6 +1,7 @@
-SyVOLT is a user-friendly Eclipse plugin to verify pre-/post- condition
-contracts on model transformations specified in the DSLTrans transformation
-language. The tool has a number of unique features, outlined below.
+SyVOLT (Symbolic Verifier of mOdeL Transformations) is a user-friendly
+Eclipse plugin to verify pre-/post- condition contracts on model transformations
+specified in the DSLTrans transformation language. The tool has a number of
+unique features, outlined below.
 
 \subsection{Graphical Modelling of Model Transformation Contracts}
 
@@ -48,8 +49,10 @@ means to internally represent both symbolic executions and contracts. SyVOLT
 then reasons over these graphs to build a proof that contracts hold or do not
 hold. Note that by using a typed graph representation, our technique can prove
 contracts that include constraints on how the attributes of the input and output
-models. An example of this would be in the Families-To-Persons transformation
-from the ATL zoo [CITE]. In this transformation, the name for a person in the
+models.
+
+\levi{keep the text from here on?} An example of this would be in the
+Families-To-Persons transformation from the ATL zoo [CITE]. In this transformation, the name for a person in the
 output graph is a concatenation of two strings \cgg{instead of ''strings``,
 should be ''attributes``} from elements in the input graph. Our contract prover
 can prove that this concatenation will be valid in all cases.
@@ -90,15 +93,14 @@ Even though our technique is exhaustive, our approach takes relatively short
 amounts of time to prove contracts. For example, our experiments with industrial
 transformations~\cite{Oakes} show that contracts can be verified within a few
 minutes. In Gehan Selim's PhD thesis~\cite{Selim2015}
-further evidence of SyVOLT's speed is given when verifying an
-academically developed transformation for giving semantics to the UML-RT language in terms of
+further evidence of SyVOLT's speed is given when verifying a relatively large
+model transformation for giving semantics to the UML-RT language in terms of
 the Kiltera process language~\cite{PosseDingel2014}. SyVOLT's symbolic execution
 engine is fully homegrown~\cite{LucioVang} and does not depend on third-party
-solvers.
-Despite the large effort needed to build the codebase, we have been able to
-increasingly optimize the engine for both space and time economy.
-\cite{Selim2014} demonstrates that our prover is substantially faster than
-similar approaches based on SAT solvers.
+solvers. Although this has implied a large effort to build the codebase, it has
+also allowed us to have the required control over the code to increasingly
+optimize the engine for both space and time economy. \cite{Selim2014}
+demonstrates that our prover is substantially faster than similar approaches based on SAT solvers.
 
 
 \subsection{Production of Counter-Examples}
@@ -134,7 +136,8 @@ to textual, and this makes the interaction with SyVolt easier since the modeler
 can use the model editor that is most convenient. Internally, SyVolt uses 
 the Himesis format [CITE] to represent models.
 
-\subsection{Model Driven Developed GUI}
+\subsection{Model Driven Developed GUI\levi{this text is subsumed by section
+III a)}}
 \label{sec:mdd_gui}
 
 To take advantage of the productivity promised by MDD, we used a language called
