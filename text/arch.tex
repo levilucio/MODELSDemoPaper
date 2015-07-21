@@ -113,7 +113,7 @@ From the set of GMF models, a set of eclipse plugins are synthesized.
 These make up SyVolt graphical editor\footnote{A fixed structure textual editor is also provided but this editor lacks several usability improvements and, hence, is not appropriate to model SyVolt contracts.}.
 
 
-\subsection{Generating Artifacts (2)}
+\subsection{Generating Artifacts (2) \cgg{I propose new name for this: Himesis Graph Generation (2)}}
 For our contract prover, there are a number of artifacts that need to be generated. For example, typed graphs in the Himesis format [CITE] are generated from each rule and contract using Eclipse Generation Language (EGL) templates. As well, the top-level Python scripts used to execute the contract prover are also generated through this method. The output of these top-level scripts will be presented to the user as the result of whether the contract holds or not.
 
 This use of model-to-text generation allows for precise control over the artifacts that are produced, while also taking a relatively short amount of time to create and debug.
