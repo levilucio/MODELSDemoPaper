@@ -22,6 +22,7 @@ The visual representation of a contract has all the necessary information to der
 logical expression to be used by the internal SyVolt prover.
 
 \subsection{Push-Button Proofs}
+\label{sec:push_button_proofs}
 SyVOLT is a verification tool that provides formal guarantees of correctness of
 a model transformation. The proving process is fully automatic and the all
 formal details are completely hidded from the user, who only needs to specify a
@@ -46,7 +47,7 @@ Our model transformation verification technique relies on typed graphs as the
 means to internally represent both symbolic executions and contracts. SyVOLT
 then reasons over these graphs to build a proof that contracts hold or do not
 hold. Note that by using a typed graph representation, our technique can prove
-contracts that include contraints on how the attributes of the input and output
+contracts that include constraints on how the attributes of the input and output
 models. An example of this would be in the Families-To-Persons transformation
 from the ATL zoo [CITE]. In this transformation, the name for a person in the
 output graph is a concatenation of two strings \cgg{instead of ''strings``,

@@ -36,7 +36,7 @@ SyVOLT's codebase, or for SyVOLT's development:
   models used inside SyVOLT. Note that, while metamodels during the construction
   of SyVOLT to provide exemplar data for the algorithm, in the finished
   SyVOLT all models are automatically generated and metamodels only exist
-  implicitely.\\
+  implicitly.\\
   \item \textbf{T-Core}~\cite{}: T-Core is a collection of model transformation
   primitives developed at the MSDL, allowing fine-grained manipulation of
   models. It was initially built as a means to rapidly build
@@ -50,7 +50,7 @@ SyVOLT's codebase, or for SyVOLT's development:
   T-Core is also an explicitly modeled model transformation language, a T-Core
   model transformation rule is also a Himesis model.\\
   \item \textbf{EMF} (Eclipse Modelling Framework)~\cite{}: SyVOLT makes use of
-  EMF's E-Core format for the XMI representation of DSLTrans transformations
+  EMF's E-Core format for the XMI~\footnote{\url{http://www.omg.org/spec/XMI/}} representation of DSLTrans transformations
   and SyVOLT's contracts within the Eclipse editors. Note that EMF is only used
   in the Eclipse front-end, and that models in those formats are converted into
   Himesis such that the contract prover engine can compute the proofs.\\
@@ -114,9 +114,20 @@ These make up SyVolt graphical editor\footnote{A fixed structure textual editor 
 
 
 \subsection{Generating Artifacts (2) \cgg{I propose new name for this: Himesis Graph Generation (2)}}
-For our contract prover, there are a number of artifacts that need to be generated. For example, typed graphs in the Himesis format [CITE] are generated from each rule and contract using Eclipse Generation Language (EGL) templates. As well, the top-level Python scripts used to execute the contract prover are also generated through this method. The output of these top-level scripts will be presented to the user as the result of whether the contract holds or not.
 
-This use of model-to-text generation allows for precise control over the artifacts that are produced, while also taking a relatively short amount of time to create and debug.
+The SyVolt contract prover uses Himesis~\cite{Provost2006} internally to represent all models for several reasons: independence, efficiency and tool support.
+Independence is ensured because Himesis is very expressive and also very simple, which means it will not change for the foreseeable future. 
+In \cite{Syriani2010b}, it is reported empirically that Himesis is a good format to perform the typical graph manipulation operations and it is seamlessly supported by T-Core~\cite{Syriani2010a}.
+
+To translate SyVolt contracts and DSLTrans transformations into the equivalent Himesis representations we used the Epsilon Generation Language (EGL~\cite{Rose2008}).
+Besides easy integration with Eclipse and native support of the expressive Epsilon Object Language (EOL~\cite{Kolovos}), EGL also provides tasks for the Ant~\footnote{\url{http://ant.apache.org}} build tool, which was used to orchestrate the multiple tools in the proving process (see Section~\ref{sec:push_button_proofs}).
+
+We used two EGL Transformations: one to generate the Himesis representation of a DSLTRans transformation and one to generate the Himesis representation of the SyVolt contracts. The original DSLTrans transformation is manipulated using the DSLTrans editor and is serialized in XMI format. Similarly, SyVolt contracts are manipulated with the SyVolt graphical editor and serialized in XMI format.
+
+As opposed to the XMI format which declaratively represents the graph, the Himesis representation of a graph is given by Python code referencing the Himesis library. When this code is executed it loads the Himesis graph to memory.
+
+Since Himesis is a textual format, identifiers are necessary to correctly describe the associations between graph nodes. The EGL transformations make sure these are correctly generated.
+
 
 \subsection{PyRamify (3)}
 
