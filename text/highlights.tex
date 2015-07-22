@@ -1,7 +1,4 @@
-SyVOLT (Symbolic Verifier of mOdeL Transformations) is a user-friendly
-Eclipse plugin to verify pre-/post- condition contracts on model transformations
-specified in the DSLTrans transformation language. The tool has a number of
-unique features, outlined below.
+SyVOLT has a number of unique features, outlined below.
 
 \subsection{Graphical Modelling of Model Transformation Contracts}
 
@@ -14,13 +11,14 @@ in the post-condition part of the contract and any traceability relations
 between the two. Due to the graph-like structure of the pre and post conditions
 of contracts, the visual representation of the contract in SyVolt editor allows
 the user to quickly build and intuitively understand their meaning.
-If a textual (logical or mathematical) editor where to be used, the user would
-need an extra system of identifiers to correctly prescribe the associations between pre and post-condition elements whereas in the visual representation, the user graphically builds the associations between those elements.
-\levi{Claudio, I don't understand this sentence}
-\cgg{Please tell me now if you can understand it.}
+%If a textual (logical or mathematical) editor where to be used, the user would
+%need an extra system of identifiers to correctly prescribe the associations
+% between pre and post-condition elements whereas in the visual representation, the user graphically builds the associations between those elements.
+%\levi{Claudio, I don't understand this sentence}
+%\cgg{Please tell me now if you can understand it.}
 
-The visual representation of a contract has all the necessary information to derive the correct 
-logical expression to be used by the internal SyVolt prover.
+%The visual representation of a contract has all the necessary information to
+% derive the correct logical expression to be used by the internal SyVolt prover.
 
 \subsection{Push-Button Proofs}
 \label{sec:push_button_proofs}
@@ -38,28 +36,34 @@ transformations.
 
 \subsection{Based on Symbolic Execution}
 
-Our technique shares its principles with symbolic execution, a
-classically used method to verify code. The underlying idea entails building a
-finite representation of the (infinite) set of model transformation
-computations, such that properties of interest can be proved on such finite
-representation and extrapolated to the infinite set of possible computations.
+Our technique shares its principles with symbolic execution, a classic method to
+verify code. The underlying idea entails building a finite representation of the
+(infinite) set of computations that can be built by a model transformation
+specification. In this context, each symbolic execution (also called
+\emph{path condition}) consists of a combination of a subset of the rules of the
+model transformation being verified in a way that it represents executing the model transformation over any input
+model those rules match on. Then, properties of interest can be proved on the
+set of generated path conditions and extrapolated to the infinite set of the
+model transformation's potential computations.
 
-Our model transformation verification technique relies on typed graphs as the
-means to internally represent both symbolic executions and contracts. SyVOLT
-then reasons over these graphs to build a proof that contracts hold or do not
-hold. Note that by using a typed graph representation, our technique can prove
-contracts that include constraints on the attributes of the input and output
-models. 
+% Our model transformation verification technique relies on models as the
+% means to internally represent both symbolic executions and contracts. SyVOLT
+% then reasons over these graphs to build a proof that contracts hold or do not
+% hold.
 
-\levi{keep the text from here on?} An example of this would be in the
-Families-To-Persons transformation from the ATL zoo [CITE]. In this transformation, the name for a person in the
-output graph is a concatenation of two strings \cgg{instead of ''strings``,
-should be ''attributes``} from elements in the input graph. Our contract prover
-can prove that this concatenation will be valid in all cases.
+% Note that by using a typed graph representation, our technique can prove
+% contracts that include constraints on the structure and the attributes of the
+% input and output models. 
+
+% \levi{keep the text from here on?} An example of this would be in the
+% Families-To-Persons transformation from the ATL zoo [CITE]. In this transformation, the name for a person in the
+% output graph is a concatenation of two strings \cgg{instead of ''strings``,
+% should be ''attributes``} from elements in the input graph. Our contract prover
+% can prove that this concatenation will be valid in all cases.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{figures/output}
+\includegraphics[width=0.5\textwidth]{figures/output}
 \caption{The results of the contract prover}
 \label{fig:output}
 \end{figure}
@@ -110,20 +114,20 @@ demonstrates that our prover is substantially faster than similar approaches bas
 When a contract is proved to be violated by a given model transformation, it is
 useful to also provide an input model - called a \emph{counter-example} - so
 that the user can execute the model transformation with that input and verify
-that indeed it violates the contract.
-
-An advantage of out technique is that the counter-example produced by SyVolt
-describes a family of input models that violate the contract. This means that
-any input model that belongs to the family of the counter-example - i.e., fits
-the description given by the contract proving process - causes the model
-transformation to violate the contract. \cgg{Levi, did you also show that any
-model that does not belong to the family does not cause the model transformation
-to violate the contract?} Thus, the user can easily determine the error in the
-transformation and correct it. We suggest that this supports a transformation
-development method analogous to 'test-driven development'. In this method,
-development would be routinely punctuated by contract proof in order to catch
-errors early and store test cases - the counter examples produced - to be used
-in the future.
+that indeed it violates the contract. The counter-example produced by SyVOLT
+consists of a set of rules involved used to build a particular symbolic
+execution where the contract does not hold. In this sense, a counter-example
+describes a family of input models that violates the contract. By examining the
+counter-example, the user can determine which rule(s) produce the error in the
+transformation and correct it.
+%  This means that any input model that belongs to the family of the
+% counter-example - i.e., fits the description given by the contract proving
+% process - causes the model transformation to violate the contract.
+% We suggest that this supports a transformation
+% development method analogous to 'test-driven development'. In this method,
+% development would be routinely punctuated by contract proof in order to catch
+% errors early and store test cases - the counter examples produced - to be used
+% in the future.
 
 
 \subsection{Integration with Eclipse}
@@ -131,13 +135,12 @@ in the future.
 Eclipse is a popular development environment and model transformation
 tools such as ATL~\cite{atlTool}, DSLTrans~\cite{Barroca2011} and
 EGL~\cite{eglTool} are integrated with the Eclipse Modeling Framework
-(EMF)~\cite{emfTool}.
-
-To take advantage of this ecosystem, SyVOLT integrates with EMF.
-In the EMF, models can be represented in a multitude of syntaxes, from graphical
-to textual, and this makes the interaction with SyVolt easier since the modeler
-can use the model editor that is most convenient. Internally, SyVOLT uses 
-the Himesis format~\cite{Provost2006} to represent models.
+(EMF)~\cite{emfTool}. To take advantage of this ecosystem, SyVOLT integrates
+with EMF. In the EMF, models can be represented in a multitude of syntaxes, from
+graphical to textual, and this makes the interaction with SyVOLT easier since the modeler
+can use the model editor that is most convenient.
+%Internally, SyVOLT uses the Himesis format~\cite{Provost2006} to represent
+% models.
 
 %\subsection{Model Driven Developed GUI\levi{this text is subsumed by section
 %III a)}}
@@ -150,7 +153,7 @@ the Himesis format~\cite{Provost2006} to represent models.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{figures/eclipse_frontend}
+\includegraphics[width=0.5\textwidth]{figures/eclipse_frontend}
 \caption{The transformation editor within Eclipse}
 \label{fig:eclipse_frontend}
 \end{figure}

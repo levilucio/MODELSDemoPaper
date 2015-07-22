@@ -1,16 +1,53 @@
-Graph-based model transformations have become in the last few years the main means for manipulating models in model-driven development. Their simplicity, their allowance for mathematical treatment, and the fact that they can natively manipulate domain-specific concepts expressed in metamodels, all make graph-based model transformations an excellent compromise between strong theoretical foundations and applicability to real-world problems.
+% Graph-based model transformations have become in the last few years the main
+% means for manipulating models in model-driven development. Their simplicity,
+% their allowance for mathematical treatment, and the fact that they can natively
+% manipulate domain-specific concepts expressed in metamodels, all make
+% graph-based model transformations an excellent compromise between strong
+% theoretical foundations and applicability to real-world problems.
+% Because of the importance of graph-based model transformations both in the
+% academic and the industrial arenas, their verification is of prime importance.
+In this paper we introduce SyVOLT (Symbolic Verifier of mOdeL Transformations),
+a user-friendly Eclipse plugin to verify pre-/post- condition structural contracts
+on model transformations specified in the DSLTrans transformation language.
+SyVOLT's operation relies on a theoretical framework has been developed for the
+DSLTrans model transformation language, in which pre- / post- condition
+contracts can be shown to hold for all input/output pairs resulting from
+executing a given DSLTrans model transformation, or to not hold for at least one
+of those input/output pairs~\cite{Lucio2014}.
 
-Because of the importance of model transformations both in the academic and the industrial arenas, their verification is of prime importance: firstly because the correctness of software built using model-driven development techniques typically relies on the correctness of many operations executed using model transformations; and secondly because tools that allow building verified software are in strong demand, especially in industry where quality and security standards have to be met.
+% A fully
+% automatic property prover based on this theory has been shown to be applicable
+% to industrial problems~\cite{Selim2014}.
 
-There has been already an extensive work on verifying different aspects of model transformations, e.g., cf.~\cite{AmraniLSCDVTC12} for a survey.
-With respect to the contribution of this paper, we summarize previous contributions for checking different kind of contracts for model transformations whereas the concrete approaches range from testing to verification approaches.
+There has been already an extensive work on verifying different aspects of model
+transformations, e.g., cf.~\cite{AmraniLSCDVTC12} for a survey.
+With respect to the contribution of this paper, we summarize previous
+contributions for checking different kind of contracts for model transformations
+whereas the concrete approaches range from testing to verification approaches.
 
-In~\cite{Gogolla2011,Vallecillo2012} the authors describe a method where `Tracts' can be specified for model transformations. Tracts define a set of constraints on the source and target metamodels, a set of source-target constraints, and a tract test suite, i.e., a collection of source models satisfying the source constraints. The accompanying TractsTool can then automatically transform the source models into the target metamodel, and subsequently verify that the source/target model pairs satisfy the constraints. The advantages of this are that the approach is not computationally-intensive, as tests can be narrowly focused in a modular way. Besides the Tracts approach, there are several other approaches supporting the testing of model transformations based on different kind of contracts such as model fragments~\cite{Mottu2008}, graph patterns~\cite{Guerra12,BaloghBCGHMPPRVa10}, Triple Graph Grammars (TGGs)~\cite{WieberAS14}, dedicated testing languages~\cite{Kolovos06,Garcia-Dominguez11}, or as used in Tracts OCL constraints~\cite{Cariou09}, and even a combination of these mentioned approaches~\cite{Pele}. While these mentioned approaches
-resort to black-box based testing, there are also approaches which allow for white-box based testing of model transformations such as~\cite{GonzalezC12}.
+In~\cite{Gogolla2011,Vallecillo2012} the authors describe a method where
+`Tracts' can be specified for model transformations. Tracts define a set of
+constraints on the source and target metamodels, a set of source-target
+constraints, and a tract test suite, i.e., a collection of source models
+satisfying the source constraints. The accompanying TractsTool can then
+automatically transform the source models into the target metamodel, and
+subsequently verify that the source/target model pairs satisfy the constraints.
+The advantages of this are that the approach is not computationally-intensive,
+as tests can be narrowly focused in a modular way. Besides the Tracts approach,
+there are several other approaches supporting the testing of model
+transformations based on different kind of contracts such as model
+fragments~\cite{Mottu2008}, graph patterns~\cite{Guerra12,BaloghBCGHMPPRVa10},
+Triple Graph Grammars (TGGs)~\cite{WieberAS14}, dedicated testing
+languages~\cite{Kolovos06,Garcia-Dominguez11}, or as used in Tracts OCL
+constraints~\cite{Cariou09}, and even a combination of these mentioned
+approaches~\cite{Pele}. While these mentioned approaches resort to black-box
+based testing, there are also approaches which allow for white-box based testing
+of model transformations such as~\cite{GonzalezC12}.
 
-In contrast to testing approaches, our contract prover allows for contracts to be proved for all possible transformation executions, i.e., for all possible input models. However, we also keep same implication idea: the pre-condition of a contract sets constraints on the input models to the transformation, and then, the post-condition defines constraints on the output model.
-
-
-We prove that contracts hold or not for transformations constructed in a model transformation language called DSLTrans~\cite{Barroca2011}.  A theoretical framework has been developed for the DSLTrans model transformation language in which pre- / post- condition contracts can be shown to hold for all input/output pairs resulting from executing a given DSLTrans model transformation, or to not hold for at least one of those input/output pairs~\cite{Lucio2014}. A fully automatic property prover based on this theory has been shown to be applicable to industrial problems~\cite{Selim2014}.
+In contrast to testing approaches, SyVOLT allows for contracts to
+be proved for all possible transformation executions, i.e., for all possible
+input models. However, we also keep same implication idea: the pre-condition of
+a contract sets constraints on the input models to the transformation, and then,
+the post-condition defines constraints on the output model.
 
 

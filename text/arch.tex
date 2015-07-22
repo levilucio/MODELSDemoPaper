@@ -1,9 +1,9 @@
-\begin{figure*}
+\begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/syvolt_arch}
+\includegraphics[width=0.5\textwidth]{figures/syvolt_arch}
 \caption{The architecture of the SyVOLT tool}
 \label{fig:arch}
-\end{figure*}
+\end{figure}
 
 The guiding principle of the Modelling, Design, and Simulation Lab is that all
 tools and processes should be explicitly modelled at an appropriate abstraction level.
@@ -25,59 +25,64 @@ verify model transformations} in our contract prover.\\
 
 The following model-driven development tools have been used either as part of
 SyVOLT's codebase, or for SyVOLT's development:
-\begin{itemize}
+\begin{enumerate}
 
   \item \textbf{AToM$^3$}~\cite{atom3:2002}: AToM$^3$ is a meta-editor for
-  model-driven development. It has been developed at the MSDL and is used for constructing,
-  models, metamodels and model transformation rules, and for automatically
-  synthesising modeling environments.
+  model-driven development.
+%   It has been developed at the MSDL and is used for constructing,
+%   models, metamodels and model transformation rules, and for automatically
+%   synthesising modeling environments.
   AToM$^3$ has been extensively used to give support to the construction and
   visualisation of models and model transformation rules required by the proof
   engine during the initial stages of the construction of SyVOLT. 
-  Many of these artifacts were explicitely built during the construction
-  of SyVOLT in order to develop and test the proof algorithm in a controlled
-  environment. In the finished SyVOLT all these artifacts are automatically
-  generated from their graphical representations in the Eclipse front-end.\\
+%   Many of these artifacts were explicitely built during the construction
+%   of SyVOLT in order to develop and test the proof algorithm in a controlled
+%   environment. In the finished SyVOLT all these artifacts are automatically
+%   generated from their graphical representations in the Eclipse front-end.\\
 
   \item \textbf{Himesis}~\cite{Provost2006}: Himesis is a typed graph representation
   format, built upon the open-source igraph~\cite{igraphTool} library. 
-Himesis is used for several reasons: independence, efficiency and tool support.
-Independence is ensured because Himesis is very expressive and also very simple,
-which means it will not change for the foreseeable future.
+% Himesis is used for several reasons: independence, efficiency and tool support.
+% Independence is ensured because Himesis is very expressive and also very simple,
+% which means it will not change for the foreseeable future.
 In \cite{Syriani2010b}, it is reported empirically that Himesis is a good format
 to perform the typical graph manipulation operations and it is seamlessly
 supported by T-Core.  
   Himesis is used pervasively within SyVOLT to represent models of 
   DSLTrans rules and of SyVOLT contracts, as well as all the model
-  transformation rules required by the proof algorithm.\\
+  transformation rules required by the proof algorithm.
   
   \item \textbf{T-Core}~\cite{Syriani2010a}: T-Core is a collection of model transformation
   primitives developed at the MSDL, allowing fine-grained manipulation of
-  models. It was initially built as a means to rapidly build
-  high-level model transformation languages. T-Core has been used to
-  successfully deconstruct and reconstruct several mainstream model transformation
-  languages~\cite{}. The main operations of T-Core are model \emph{matching},
+  models.
+%   It was initially built as a means to rapidly build
+%   high-level model transformation languages. T-Core has been used to
+%   successfully deconstruct and reconstruct several mainstream model transformation
+%   languages~\cite{}. 
+  The main operations of T-Core are model \emph{matching},
   model \emph{rewriting} and \emph{iterating} through a set of match sites in a model.
   The level of control in model manipulation, together with T-Core's speed and
   scalability when treating large models, suited well our needs when
   implementing the property proof algorithm described in~\cite{Lucio2014}. Note that because
   T-Core is also an explicitly modeled model transformation language, a T-Core
-  model transformation rule is also a (Himesis) model.\\
+  model transformation rule is also a (Himesis) model.
 
   \item \textbf{EMF} (Eclipse Modelling Framework)~\cite{emfTool}: SyVOLT makes
-  use of EMF's E-Core format for the XMI~\footnote{\url{http://www.omg.org/spec/XMI/}} representation of DSLTrans transformations
-  and SyVOLT's contracts within the Eclipse editors. Note that EMF is only used
-  in the Eclipse front-end, and that Ecore models are converted into
-  the Himesis format for the contract prover engine to compute the
-  proofs.\\
+  use of EMF's E-Core format for the XMI representation of DSLTrans transformations
+  and SyVOLT's contracts within the Eclipse editors.
+%   Note that EMF is only used
+%   in the Eclipse front-end, and that Ecore models are converted into
+%   the Himesis format for the contract prover engine to compute the
+%   proofs.\\
   \item \textbf{EGL} (Epsilon Generation Language)~\cite{eglTool}: Converting
-  Ecore models into Himesis models is achieved using EGL, a language from the Epsilon
-  family. Besides easy integration with Eclipse and native support of the expressive
-Epsilon Object Language (EOL~\cite{Kolovos}), EGL also provides tasks for the
-Ant~\footnote{\url{http://ant.apache.org}} build tool, which was used to
-orchestrate the multiple tools in the proving process (see
-Section~\ref{sec:push_button_proofs}).\\
-\end{itemize}
+  Ecore models into Himesis models is achieved using EGL, a
+  model-to-text transformation language from the Epsilon family.
+% Besides easy integration with Eclipse and native support of the expressive
+% Epsilon Object Language (EOL~\cite{Kolovos}), EGL also provides tasks for the
+% Ant~\footnote{\url{http://ant.apache.org}} build tool, which was used to
+% orchestrate the multiple tools in the proving process (see
+% Section~\ref{sec:push_button_proofs}).\\
+\end{enumerate}
 
 % Elements of the architecture that could not be built using model driven tools
 % (for lack of technological availability) have been developed using model-driven
@@ -86,14 +91,14 @@ Section~\ref{sec:push_button_proofs}).\\
 Figure~\ref{fig:arch} shows the architecture of the SyVOLT tool. Two essential
 blocks are depicted: the graphical Eclipse front-end and the proof engine
 back-end. While the front-end is responsible for the interaction with SyVOLT's
-user, the back-end implements the algorithm for running the proofs of the contracts. Note
-that two kinds of communication occur between SyVOLT's front-end and back-end:
+user, the back-end implements the algorithm for building the proofs of the
+contracts.
+Note that two kinds of communication occur between SyVOLT's front-end and back-end:
 in the left-to-right direction, a number of artifacts (models and model
 transformations) are syntesized from the graphical representations of the
 DSLTrans transformations and of the SyVOLT contracts, and passed to the
-back-end.
-In the reverse direction, the proof result and counter-examples, if any, are
-passed from the proof engine back-end to the Eclipse front-end.
+back-end. In the reverse direction, the proof result and counter-examples, if
+any, are passed from the proof engine back-end to the Eclipse front-end.
 
 Note that in Figure~\ref{fig:arch}, each component is annotated by a number
 identifier. Following this numbering sequence, we will briefly visit each
@@ -184,14 +189,14 @@ memory once they are instanciated by the proof engine back-end.
 % containing models of the DSLTrans transformation being analysed
 % and the T-Core model transformation rules necessary for the property proof step.
 
-Note that, while this approach of building models and model transformations as
-textual files is sufficient for our needs, it is not ideal from the model-driven
-development viewpoint. Building models as textual files forces us to deal to
-the accidental complexity of Python code and of the Himesis format, making the
-generation of these artifacts more difficult and error prone than it needs to
-be. The issues encountered here expose one of the current important fragilities
-of model-driven development: the difficulty of exchanging high-level data
-between different modelling frameworks~\levi{cite benoit combemale here}.
+% Note that, while this approach of building models and model transformations as
+% textual files is sufficient for our needs, it is not ideal from the model-driven
+% development viewpoint. Building models as textual files forces us to deal to
+% the accidental complexity of Python code and of the Himesis format, making the
+% generation of these artifacts more difficult and error prone than it needs to
+% be. The issues encountered here expose one of the current important fragilities
+% of model-driven development: the difficulty of exchanging high-level data
+% between different modelling frameworks~\levi{cite benoit combemale here}.
 
 
 % As opposed to the XMI format which declaratively represents the graph, the
@@ -221,7 +226,7 @@ transformation being verified.
 This additional model transformation generation step is achieved by the PyRamify
 component. PyRamify is a Python script that takes as input Himesis graphs
 representing the rules in the transformation. Then, through the RAMification
-procedure~\ref{KuhneMSVW09}, T-Core matchers and rewriters for each rule are
+procedure~\cite{KuhneMSVW09}, T-Core matchers and rewriters for each rule are
 produced. Very briefly, while matchers allow the contract prover to determine
 how rules might execute over a path condition being built, rewriters properly
 combine the right-hand side of a DSLTrans rule with that same path condition
@@ -231,20 +236,20 @@ whenever necessary.
 % transformations used for analysing how the DSLTrans rules in a transformation
 % depend on each other. Explain this further??
 
-Currently, PyRamify is implemented as a Python script, as we were unable to
-implement at the time automatic creation of higher-order artifacts (in our
-case, T-Core transformations) from models in another modelling tool.
-This was due to the mix of different modelling abstraction levels present in
-SyVOLT and that led to a number of technical difficulties.
-
-We have recently learned that, alternatively, \emph{path condition generation
-transformations} could be built directly from the Ecore representation of
-DSLTrans rules by using EGL technology -- as was done for the artifacts
-described in Section~\ref{sec:gen_models_mt}. Nevertheless, a preferred solution for us would
-be to use model transformation technology that that explicitely allows
-building model transformations from simple models. To the best of our knowledge,
-model transformation technology that allows moving between models of a given
-order $n$ and an order $n+1$ is not yet available in the modelling community.
+% Currently, PyRamify is implemented as a Python script, as we were unable to
+% implement at the time automatic creation of higher-order artifacts (in our
+% case, T-Core transformations) from models in another modelling tool.
+% This was due to the mix of different modelling abstraction levels present in
+% SyVOLT and that led to a number of technical difficulties.
+% 
+% We have recently learned that, alternatively, \emph{path condition generation
+% transformations} could be built directly from the Ecore representation of
+% DSLTrans rules by using EGL technology -- as was done for the artifacts
+% described in Section~\ref{sec:gen_models_mt}. Nevertheless, a preferred solution for us would
+% be to use model transformation technology that that explicitely allows
+% building model transformations from simple models. To the best of our knowledge,
+% model transformation technology that allows moving between models of a given
+% order $n$ and an order $n+1$ is not yet available in the modelling community.
 
 \subsection{Path Condition Generation (4)}
 \label{sec:path_cond_gen}
@@ -274,13 +279,13 @@ transformations in order to exclude impossible rule combinations.
 % described in~\cite{Lucio2014}, along with a formal discussion of the validity
 % and completeness of this work.
 
-Note that path condition generation is a complex task, difficult to fully
-model as a single model transformation. As such, the algorithm in this component
-has been implemented as a Python script that is responsible for scheduling all the
-path condition generation transformations in the right order. This programmatic level of granularity of
-manipulation has allowed us to build many optimizations to speed up the path
-condition generation process. Examples of such optimizations are the caching of
-expensive match operations, or the parallelization of the path condition generation algorithm. 
+% Note that path condition generation is a complex task, difficult to fully
+% model as a single model transformation. As such, the algorithm in this component
+% has been implemented as a Python script that is responsible for scheduling all the
+% path condition generation transformations in the right order. This programmatic level of granularity of
+% manipulation has allowed us to build many optimizations to speed up the path
+% condition generation process. Examples of such optimizations are the caching of
+% expensive match operations, or the parallelization of the path condition generation algorithm. 
  
 \subsection{Contract Proof (5)}
 
@@ -303,14 +308,14 @@ the property proof T-Core transformations. Note that, in this case, the
 T-Core transformations are simply a set of matchers, or queries, as no further
 editing of the path conditions is necessary during this part of the proof.
 
-As in for the path condition generation component described in
-Section~\ref{sec:path_cond_gen}, the contract proof algorithm has also been
-implemented as a Python script that schedules all the property proof T-Core
-transformations appropriately. As before, using fine-grained programmatic
-manipulations of the models and model transformations involved in the contract
-proof algorithm has allowed us to implement optimization strategies during
-contract proof. The main of these strategies is the skipping of path conditions
-for which the contract is sure to hold without further analysis, given
-some existing cached information about similar path conditions.
+% As in for the path condition generation component described in
+% Section~\ref{sec:path_cond_gen}, the contract proof algorithm has also been
+% implemented as a Python script that schedules all the property proof T-Core
+% transformations appropriately. As before, using fine-grained programmatic
+% manipulations of the models and model transformations involved in the contract
+% proof algorithm has allowed us to implement optimization strategies during
+% contract proof. The main of these strategies is the skipping of path conditions
+% for which the contract is sure to hold without further analysis, given
+% some existing cached information about similar path conditions.
 
 
