@@ -127,18 +127,28 @@ the push of a button and without any intervention from the part of the user.
 % manner.
 
 
-\subsection{SyVOLT Contract Editor (1)}\levi{too heavy on how it was
-developed and tool little on how it is used}
+\subsection{SyVOLT Contract Editor (1)}
 
-The SyVolt contract editor is realized by a set of Eclipse plugins.
-The runtime architecture of this editor is the typical architecture of a
-Graphical Modeling Framework (GMF)
-\footnote{\url{http://www.eclipse.org/modeling/gmp/}} editor.
-What is important is how this editor was developed.
+%how it was developed
+The SyVolt contract editor, shown in Figure~\ref{fig:eclipse_frontend}, is
+realized by a set of Eclipse Graphical Modeling Framework (GMF
+\footnote{\url{http://www.eclipse.org/modeling/gmp/}}) plugins, generated using
+EuGENia~\cite{Kolovos2010a}.
 
-As mentioned in Section~\ref{sec:mdd_gui}, we used Eugenia[CITE] to quickly
-develop the SyVolt contract editor shown in Figure~\ref{fig:eclipse_frontend}.
+%how it is used
+The user can prescribe contracts (the gray rectangle in the left-hand side of
+Figure~\ref{fig:eclipse_frontend}) and propositional logic properties involving
+contracts (the white rectangle in the center of the figure) using the toolbox (right-hand side of Figure~\ref{fig:eclipse_frontend}).
 
+% what's it like internally.
+Internally, the graphical editor reads and write two models: the domain model and the graphical model.
+The graphical model can be seen as the realization of the concrete syntax by storing the coordinates and other visual information about the shapes that are shown in the graphical editor (Figure~\ref{fig:eclipse_frontend}). 
+In contrast, the domain model contains the abstract syntax: the essence of the elements that form the contracts and the propositional properties.
+%bridge to the next section
+The domain model is the artifact used when generating the models for the construction of the proof.
+
+
+\begin{comment}
 Eugenia consists of a set of annotations that are attached to the metamodel of
 SyVOLT contracts. An annotation can, for instance, specify that an atomic
 contract will be drawn as a rounded rectangle, with a specific color and a label
@@ -146,7 +156,6 @@ that is equal to the name attribute of the contract.
 The annotations are not very expressive but they contain the essential
 information to generate a set of GMF models that, ultimately, describe a basic
 usable graphical editor.
-
 Each generated GMF model is concerned with one aspect of the editor and can be
 further customized to our needs. GMF models are much more expressive than the
 Eugenia annotations.
@@ -162,6 +171,9 @@ hence, is not appropriate to model SyVolt contracts.}.
 The original DSLTrans transformation is manipulated using the DSLTrans editor
 and is serialized in XMI format. Similarly, SyVOLT contracts are manipulated with the SyVolt graphical
 editor and serialized in XMI format.
+
+\end{comment}
+
 
 
 \subsection{Generating Models and Model Transformations for Proof Construction
