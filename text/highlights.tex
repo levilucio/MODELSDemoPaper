@@ -24,7 +24,7 @@ the user to quickly build and intuitively understand their meaning.
 \label{sec:push_button_proofs}
 SyVOLT is a verification tool that provides formal guarantees of correctness of
 a model transformation. The proving process is fully automatic and
-the all formal details are completely hidded from the user, who only needs to specify a
+the all formal details are completely hidden from the user, who only needs to specify a
 set of contracts for the transformation being verified. Once the transformation and the
 contracts of interest are created, one command will start the property proving
 process. This process will automatically create all required artifacts (as
@@ -41,7 +41,7 @@ verify code. The underlying idea entails building a finite representation of the
 (infinite) set of computations that can be built by a model transformation
 specification. In this context, each symbolic execution (also called
 \emph{path condition}) consists of a combination of a subset of the rules of the
-model transformation being verified in a way that it represents executing the model transformation over any input
+model transformation being verified in a way that it represents the execution of the the model transformation over any input
 model those rules match on. Then, properties of interest can be proved on the
 set of generated path conditions and extrapolated to the infinite set of the
 model transformation's potential computations.
@@ -90,11 +90,11 @@ ATL transformations.
 
 We have some evidence that SyVOLT scales to transformations of practical
 interest. This has been empirically shown by applying it to DSLTrans
-transformations up to over 60 rules, and ATL transformations up to 13
+transformations with up to over 60 rules, and ATL transformations with up to 13
 rules~\cite{Oakes}. From our own experience with DSLTrans, the size of a
 DSLTrans transformations varies widely, with the average size ranging from 10 up
 to 50 rules. The average size of an ATL transformation is around 20 rules. [cite
-Manuel's paper, should we keep this?].
+Manuel's paper, should we keep this?] \cgg{The problem is that there is not enough infor about those 20 rules. Are they imperative? Do they use imperative helpers? How many rules are generated when those transformations are translated to DSLTrans?}.
 Even though our technique is exhaustive, our approach takes relatively short
 amounts of time to prove contracts. For example, our experiments with industrial
 transformations~\cite{Oakes} show that contracts can be verified within a few
@@ -103,7 +103,7 @@ further evidence of SyVOLT's speed is given when verifying a relatively large
 model transformation for giving semantics to the UML-RT language in terms of
 the Kiltera process language~\cite{PosseDingel2014}. SyVOLT's symbolic execution
 engine is fully homegrown~\cite{LucioVang} and does not depend on third-party
-solvers. Although this has implied a large effort to build the codebase, it has
+solvers \cgg{This sentence and the next one are part of the "how". Hence, they should be in the Architecture section. The highlight here is the speed and not how that performance was achieved. Correct?}. Although this has implied a large effort to build the codebase, it has
 also allowed us to have the required control over the code to iteratively
 optimize the engine for both space and time economy. \cite{Selim2014}
 demonstrates that our prover is substantially faster than similar approaches based on SAT solvers.
@@ -136,9 +136,9 @@ Eclipse is a popular development environment and model transformation
 tools such as ATL~\cite{atlTool}, DSLTrans~\cite{Barroca2011} and
 EGL~\cite{eglTool} are integrated with the Eclipse Modeling Framework
 (EMF)~\cite{emfTool}. To take advantage of this ecosystem, SyVOLT integrates
-with EMF. In the EMF, models can be represented in a multitude of syntaxes, from
+with EMF too. In the EMF, models can be represented in a multitude of syntaxes, from
 graphical to textual, and this makes the interaction with SyVOLT easier since the modeler
-can use the model editor that is most convenient.
+can use the model editor that he/she finds most convenient.
 %Internally, SyVOLT uses the Himesis format~\cite{Provost2006} to represent
 % models.
 
