@@ -79,13 +79,12 @@ transformation. The approach is sound and complete, as described
 in~\cite{Lucio2014}.
 
 \subsection{Proving Contracts about ATL Model Transformations}
-The Atlas Transformation Language (ATL)~\cite{atlTool} is commonly-used in both
-industry and academia applications. In order to extend our approach into these domains, we
+The Atlas Transformation Language (ATL\footnote{http://eclipse.org/atl}) is
+commonly-used in both industry and academia applications. In order to extend our approach into these domains, we
 have developed a higher-order transformation that is able to automatically
-transform declarative ATL transformations\footnote{See ~\cite{Oakes} for an
-extact account on which are the constructs of ATL that we can verify.} into our
-transformation language DSLTrans. This allows the user to also prove contracts
-on ATL transformations. Extending this capability to SyVOLT's user interface is
+transform declarative ATL transformations\footnote{See ~\cite{Oakes} for the
+constructs of ATL that SyVOLT can verify.} into our transformation language
+DSLTrans. This allows the user to also prove contracts on ATL transformations. Extending this capability to SyVOLT's user interface is
 future work.
 
 \subsection{Scalability and Speed}
@@ -134,10 +133,10 @@ consumed all the rules in this set.
 \subsection{Integration with Eclipse}
 
 Eclipse is a popular development environment and model transformation
-tools such as ATL~\cite{atlTool}, DSLTrans~\cite{Barroca2011} and
-EGL~\cite{eglTool} are integrated with the Eclipse Modeling Framework
-(EMF)~\cite{emfTool}. To take advantage of this ecosystem, SyVOLT integrates
-with EMF too. In the EMF, models can be represented in a multitude of syntaxes, from
+tools such as ATL, DSLTrans~\cite{Barroca2011} and
+EGL~\footnote{http://www.eclipse.org/epsilon/} are integrated with the Eclipse Modeling Framework
+(EMF)~\footnote{https://eclipse.org/modeling/emf/}. To take advantage of this
+ecosystem, SyVOLT integrates with EMF too. In the EMF, models can be represented in a multitude of syntaxes, from
 graphical to textual, and this makes the interaction with SyVOLT easier since the modeler
 can use the model editor that he/she finds most convenient.
 %Internally, SyVOLT uses the Himesis format~\cite{Provost2006} to represent
@@ -155,7 +154,7 @@ can use the model editor that he/she finds most convenient.
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{figures/eclipse_frontend}
-\caption{The transformation editor within Eclipse}
+\caption{The SyVOLT editor within Eclipse}
 \label{fig:eclipse_frontend}
 \end{figure}
 
