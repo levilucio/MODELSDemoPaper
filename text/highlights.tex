@@ -4,13 +4,13 @@ SyVOLT has a number of unique features, outlined below.
 
 SyVOLT proves pre-/post-condition contracts hold for a model transformation.
 Such contracts establish relations between patterns occurring in input and output
-models of a model transformation. If a contract holds, then a formal guarantee
-exists that whenever an input model contains the pattern specified in the
-pre-condition of the contract, the output model contains the pattern specified
-in the post-condition part of the contract and any traceability relations
-between the two. Due to the graph-like structure of the pre and post conditions
-of contracts, the visual representation of the contract in SyVolt editor allows
-the user to quickly build and intuitively understand their meaning.
+models of a model transformation. If a contract holds, a formal guarantee
+exists that whenever a transformation's input model contains the pattern
+specified in the pre-condition of the contract, its the output model contains
+the pattern specified in the contract's post-condition. Contracts can 
+optionally include traceability relations between input and output patterns. The
+visual representation of a contract in the SyVOLT editor is meant for allowing
+the user to intuitively understand its meaning.
 %If a textual (logical or mathematical) editor where to be used, the user would
 %need an extra system of identifiers to correctly prescribe the associations
 % between pre and post-condition elements whereas in the visual representation, the user graphically builds the associations between those elements.
@@ -22,29 +22,29 @@ the user to quickly build and intuitively understand their meaning.
 
 \subsection{Push-Button Proofs}
 \label{sec:push_button_proofs}
-SyVOLT is a verification tool that provides formal guarantees of correctness of
-a model transformation. The proving process is fully automatic and
-the all formal details are completely hidden from the user, who only needs to specify a
-set of contracts for the transformation being verified. Once the transformation and the
-contracts of interest are created, one command will start the property proving
-process. This process will automatically create all required artifacts (as
-detailed in the following section), run the process, and then provide the
-results to the user within the Eclipse environment, as seen in
+The proving process for a SyVOLT contract is fully automatic and the all of the
+approach's formal details are completely hidden from the user. Once the
+transformation and the contracts of interest are created, one command will start
+the property proving process. This process will automatically create all
+required artifacts (as detailed in Section~\ref{sec:arch}), run the process, and
+provide the results to the user within the Eclipse environment, as seen in
 Figure~\ref{fig:output}. This allows the user to continually stay within the
-Eclipse environment, which is where he develops the contracts and the model
-transformations.
+Eclipse environment, where he or she develops the contracts and the
+model transformations.
 
 \subsection{Based on Symbolic Execution}
 
 Our technique shares its principles with symbolic execution, a classic method to
 verify code. The underlying idea entails building a finite representation of the
 (infinite) set of computations that can be built by a model transformation
-specification. In this context, each symbolic execution (also called
-\emph{path condition}) consists of a combination of a subset of the rules of the
-model transformation being verified in a way that it represents the execution of the the model transformation over any input
-model those rules match on. Then, properties of interest can be proved on the
-set of generated path conditions and extrapolated to the infinite set of the
-model transformation's potential computations.
+specification. In this context, each symbolic execution -- which in the context
+of our work context we call \emph{path condition} -- consists of a combination
+of a subset of the rules of the model transformation specification being verified.
+Because a path condition contains a number of rules, it represents the execution
+of the model transformation over any input model all those rules match on.
+Properties of interest are proved on the set of path conditions built for a
+model transformation, and are extrapolated to the infinite set of
+the model transformation's computations through an abstration relation.
 
 % Our model transformation verification technique relies on models as the
 % means to internally represent both symbolic executions and contracts. SyVOLT
@@ -72,54 +72,55 @@ model transformation's potential computations.
 
 Our technique is exhaustive, in the sense that whenever a contract holds, it
 will hold for all possible input models to a transformation. This is possible
-because SyVOLT operates on specifications of outplace model transformations
-where unbounded loops and model element deletions are not allowed. SyVOLT thus proves
+because SyVOLT operates on specifications of outplace model transformations,
+where unbounded loops and model element deletions are not allowed. SyVOLT proves
 contracts in an input-independent manner, relying only on the specification of the
-transformation. The soundness and completeness of our technique is described
+transformation. The approach is sound and complete, as described
 in~\cite{Lucio2014}.
 
 \subsection{Proving Contracts about ATL Model Transformations}
 The Atlas Transformation Language (ATL)~\cite{atlTool} is commonly-used in both
 industry and academia applications. In order to extend our approach into these domains, we
 have developed a higher-order transformation that is able to automatically
-transform declarative ATL transformations into our transformation language
-DSLTrans~\cite{Oakes}. This allows the user to also prove contracts on
-ATL transformations.
+transform declarative ATL transformations\footnote{See ~\cite{Oakes} for an
+extact account on which are the constructs of ATL that we can verify.} into our
+transformation language DSLTrans. This allows the user to also prove contracts
+on ATL transformations. Extending this capability to SyVOLT's user interface is
+future work.
 
 \subsection{Scalability and Speed}
 
 We have some evidence that SyVOLT scales to transformations of practical
-interest. This has been empirically shown by applying it to DSLTrans
-transformations with up to over 60 rules, and ATL transformations with up to 13
-rules~\cite{Oakes}. From our own experience with DSLTrans, the size of a
-DSLTrans transformations varies widely, with the average size ranging from 10 up
-to 50 rules. The average size of an ATL transformation is around 20 rules. [cite
-Manuel's paper, should we keep this?] \cgg{The problem is that there is not enough infor about those 20 rules. Are they imperative? Do they use imperative helpers? How many rules are generated when those transformations are translated to DSLTrans?}.
+interest, more scientific work to fully validate this hypothesis is
+necessary. In particular we have applied DSLTrans transformations with up to
+over 60 rules, and ATL transformations with up to 13 rules~\cite{Oakes}. From our own
+experience with DSLTrans, the size of a DSLTrans transformations varies widely,
+with the average size ranging from 10 up to 50 rules. The average size of an ATL
+transformation is around 20 rules. [cite Manuel's paper??].
 Even though our technique is exhaustive, our approach takes relatively short
-amounts of time to prove contracts. For example, our experiments with industrial
-transformations~\cite{Oakes} show that contracts can be verified within a few
-minutes. In Gehan Selim's PhD thesis~\cite{Selim2015}
-further evidence of SyVOLT's speed is given when verifying a relatively large
-model transformation for giving semantics to the UML-RT language in terms of
-the Kiltera process language~\cite{PosseDingel2014}. SyVOLT's symbolic execution
-engine is fully homegrown~\cite{LucioVang} and does not depend on third-party
-solvers \cgg{This sentence and the next one are part of the "how". Hence, they should be in the Architecture section. The highlight here is the speed and not how that performance was achieved. Correct?}. Although this has implied a large effort to build the codebase, it has
-also allowed us to have the required control over the code to iteratively
-optimize the engine for both space and time economy. \cite{Selim2014}
-demonstrates that our prover is substantially faster than similar approaches based on SAT solvers.
+amounts of time to prove contracts. For example, our experiments with
+transformation for the ATL
+Zoo\footnote{http://www.eclipse.org/atl/atlTransformations/}~\cite{Oakes} show that contracts can be verified within seconds. In Gehan Selim's PhD thesis~\cite{Selim2015}
+further evidence of SyVOLT's speed is given when verifying a relatively large model transformation
+for giving semantics to the UML-RT language in terms of the Kiltera process
+language~\cite{PosseDingel2014}. SyVOLT's symbolic execution engine is fully
+homegrown~\cite{LucioVang} and does not depend on third-party solvers. Although
+this has implied a large effort to build the codebase, it has allowed us to
+have the required control over the code to iteratively optimize the engine for
+space and time economy.
+\cite{Selim2014} demonstrates that our prover is substantially faster than
+similar approaches based on SAT solvers.
 
 
-\subsection{Production of Counter-Examples}
+\subsection{Counter-Examples}
 
-When a contract is proved to be violated by a given model transformation, it is
-useful to also provide an input model - called a \emph{counter-example} - so
-that the user can execute the model transformation with that input and verify
-that indeed it violates the contract. The counter-example produced by SyVOLT
-consists of a set of rules involved used to build a particular symbolic
-execution where the contract does not hold. In this sense, a counter-example
-describes a family of input models that violates the contract. By examining the
-counter-example, the user can determine which rule(s) produce the error in the
-transformation and correct it.
+When a given contract is proved to be violated by a given model transformation,
+SyVOLT can produces additional information for the user to pinpoint where
+the contract's violation occurs. This information is in
+the form of the set of model transformation rules used to build a particular
+path condition for which the contract fails. A counter-example is any input model that can be
+consumed all the rules in this set.
+
 %  This means that any input model that belongs to the family of the
 % counter-example - i.e., fits the description given by the contract proving
 % process - causes the model transformation to violate the contract.
