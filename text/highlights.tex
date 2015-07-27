@@ -27,10 +27,12 @@ approach's formal details are completely hidden from the user. Once the
 transformation and the contracts of interest are created, one command will start
 the property proving process. This process will automatically create all
 required artifacts (as detailed in Section~\ref{sec:arch}), run the process, and
-provide the results to the user within the Eclipse environment, as seen in
-Figure~\ref{fig:output}. This allows the user to continually stay within the
+provide the results to the user within the Eclipse environment. This allows the user to continually stay within the
 Eclipse environment, where he or she develops the contracts and the
 model transformations.
+
+
+
 
 \subsection{Based on Symbolic Execution}
 
@@ -38,8 +40,8 @@ Our technique shares its principles with symbolic execution, a classic method to
 verify code. The underlying idea entails building a finite representation of the
 (infinite) set of computations that can be built by a model transformation
 specification. In this context, each symbolic execution -- which in the context
-of our work context we call \emph{path condition} -- consists of a combination
-of a subset of the rules of the model transformation specification being verified.
+of our work we call a \emph{path condition} -- consists of a combination
+of a subset of the transformation's rules.
 Because a path condition contains a number of rules, it represents the execution
 of the model transformation over any input model all those rules match on.
 Properties of interest are proved on the set of path conditions built for a
@@ -61,12 +63,7 @@ the model transformation's computations through an abstration relation.
 % should be ''attributes``} from elements in the input graph. Our contract prover
 % can prove that this concatenation will be valid in all cases.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{figures/output}
-\caption{The results of the contract prover}
-\label{fig:output}
-\end{figure}
+
 
 \subsection{Input Independence and Exhaustiveness} 
 
@@ -76,7 +73,29 @@ because SyVOLT operates on specifications of outplace model transformations,
 where unbounded loops and model element deletions are not allowed. SyVOLT proves
 contracts in an input-independent manner, relying only on the specification of the
 transformation. The approach is sound and complete, as described
-in~\cite{Lucio2014}.
+in~\cite{Lucio2014}.  Figure~\ref{fig:output} shows an example of the output presented to the user, detailing which contracts hold and do not hold.
+
+\begin{figure}
+%\centering
+%\includegraphics[width=0.5\textwidth]{figures/output}
+
+\scriptsize
+\tt
+Proving contracts:
+
+Contract ``daughterMother'' holds for all input models!
+\\
+Contract ``motherFather'' does NOT hold for all input models! The contract fails on the following Path Conditions:
+[`EmptyPathCondition\_RootRule\_FatherRule\_MotherRule', ...]
+
+The smallest Path Condition where the contract fails are:
+[`EmptyPathCondition\_FatherRule\_MotherRule']
+\\
+Time to verify 2 contracts: 11.6834638966 seconds.
+It took 0.769201040268 seconds to build the set of path conditions.
+\caption{Sample results of the contract prover}
+\label{fig:output}
+\end{figure}
 
 \subsection{Proving Contracts about ATL Model Transformations}
 The Atlas Transformation Language (ATL\footnote{http://eclipse.org/atl}) is
