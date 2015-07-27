@@ -44,7 +44,7 @@ of our work we call a \emph{path condition} -- consists of a combination
 of a subset of the transformation's rules.
 Because a path condition contains a number of rules, it represents the execution
 of the model transformation over any input model all those rules match on.
-Properties of interest are proved on the set of path conditions built for a
+Contracts of interest are proved on the set of path conditions built for a
 model transformation, and are extrapolated to the infinite set of
 the model transformation's computations through an abstration relation.
 
@@ -92,34 +92,35 @@ The smallest Path Condition where the contract fails are:
 [`EmptyPathCondition\_FatherRule\_MotherRule']
 \\
 Time to verify 2 contracts: 11.6834638966 seconds.
-It took 0.769201040268 seconds to build the set of path conditions.
+%It took 0.769201040268 seconds to build the set of path conditions.
 \caption{Sample results of the contract prover}
 \label{fig:output}
 \end{figure}
 
 \subsection{Proving Contracts about ATL Model Transformations}
-The Atlas Transformation Language (ATL\footnote{http://eclipse.org/atl}) is
+The Atlas Transformation Language\footnote{http://eclipse.org/atl} (ATL) is
 commonly-used in both industry and academia applications. In order to extend our approach into these domains, we
 have developed a higher-order transformation that is able to automatically
-transform declarative ATL transformations\footnote{See ~\cite{Oakes} for the
-constructs of ATL that SyVOLT can verify.} into our transformation language
-DSLTrans. This allows the user to also prove contracts on ATL transformations. Extending this capability to SyVOLT's user interface is
+transform declarative ATL transformations into our transformation language
+DSLTrans. This allows the user to also prove contracts on ATL transformations\footnote{See \cite{Oakes} for the
+constructs of ATL that SyVOLT can verify.}. Extending this capability to SyVOLT's user interface is
 future work.
 
 \subsection{Scalability and Speed}
 
 We have some evidence that SyVOLT scales to transformations of practical
-interest, more scientific work to fully validate this hypothesis is
-necessary. In particular we have applied DSLTrans transformations with up to
+interest. In particular we have applied DSLTrans transformations with up to
 over 60 rules, and ATL transformations with up to 13 rules~\cite{Oakes}. From our own
 experience with DSLTrans, the size of a DSLTrans transformations varies widely,
 with the average size ranging from 10 up to 50 rules. The average size of an ATL
-transformation is around 20 rules. [cite Manuel's paper??].
+transformation is around 20 rules. \levi{cite Manuel's paper??}.
 Even though our technique is exhaustive, our approach takes relatively short
 amounts of time to prove contracts. For example, our experiments with
-transformation for the ATL
-Zoo\footnote{http://www.eclipse.org/atl/atlTransformations/}~\cite{Oakes} show that contracts can be verified within seconds. In Gehan Selim's PhD thesis~\cite{Selim2015}
-further evidence of SyVOLT's speed is given when verifying a relatively large model transformation
+transformation from the ATL
+Zoo\footnote{http://www.eclipse.org/atl/atlTransformations/}~\cite{Oakes} show that contracts can be verified within seconds. In 
+
+Gehan Selim's PhD thesis~\cite{Selim2015}
+provides further evidence of SyVOLT's speed in verifying a relatively large model transformation
 for giving semantics to the UML-RT language in terms of the Kiltera process
 language~\cite{PosseDingel2014}. SyVOLT's symbolic execution engine is fully
 homegrown~\cite{LucioVang} and does not depend on third-party solvers. Although
@@ -132,12 +133,11 @@ similar approaches based on SAT solvers.
 
 \subsection{Counter-Examples}
 
-When a given contract is proved to be violated by a given model transformation,
+When a given contract does not hold on a given model transformation,
 SyVOLT can produces additional information for the user to pinpoint where
 the contract's violation occurs. This information is in
 the form of the set of model transformation rules used to build a particular
-path condition for which the contract fails. A counter-example is any input model that can be
-consumed all the rules in this set.
+path condition for which the contract fails, as seen in Figure~\ref{fig:output}. A counter-example is any input model where this set of rules would execute.
 
 %  This means that any input model that belongs to the family of the
 % counter-example - i.e., fits the description given by the contract proving
@@ -151,13 +151,15 @@ consumed all the rules in this set.
 
 \subsection{Integration with Eclipse}
 
-Eclipse is a popular development environment and model transformation
+Eclipse is a popular development environment, as many model transformation
 tools such as ATL, DSLTrans~\cite{Barroca2011} and
-EGL~\footnote{http://www.eclipse.org/epsilon/} are integrated with the Eclipse Modeling Framework
-(EMF)~\footnote{https://eclipse.org/modeling/emf/}. To take advantage of this
-ecosystem, SyVOLT integrates with EMF too. In the EMF, models can be represented in a multitude of syntaxes, from
-graphical to textual, and this makes the interaction with SyVOLT easier since the modeler
-can use the model editor that he/she finds most convenient.
+EGL\footnote{http://www.eclipse.org/epsilon/} are integrated with the Eclipse Modeling Framework\footnote{https://eclipse.org/modeling/emf/}
+(EMF). To take advantage of this
+ecosystem, SyVOLT integrates with EMF to represent models in a multitude of syntaxes, from
+graphical to textual. The modeler may then operate in their preferred syntax.
+
+%, and this makes the interaction with SyVOLT easier since the modeler
+%can use the model editor that he/she finds most convenient.
 %Internally, SyVOLT uses the Himesis format~\cite{Provost2006} to represent
 % models.
 
