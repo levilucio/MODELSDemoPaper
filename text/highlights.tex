@@ -1,6 +1,6 @@
 SyVOLT has a number of unique features, outlined below.
 
-\subsection{Graphical Modelling of Model Transformation Contracts}
+\subsection{Input Independence and Exhaustiveness} 
 
 SyVOLT proves pre-/post-condition contracts hold for a model transformation.
 Such contracts establish relations between patterns occurring in input and output
@@ -8,9 +8,30 @@ models of a model transformation. If a contract holds, a formal guarantee
 exists that whenever a transformation's input model contains the pattern
 specified in the pre-condition of the contract, its the output model contains
 the pattern specified in the contract's post-condition. Contracts can 
-optionally include traceability relations between input and output patterns. The
-visual representation of a contract in the SyVOLT editor is meant for allowing
-the user to intuitively understand its meaning.
+optionally include traceability relations between input and output patterns. 
+
+Our technique is exhaustive, in the sense that whenever a contract holds, it
+will hold for all possible input models to a transformation. This is possible
+because SyVOLT operates on specifications of outplace model transformations,
+where unbounded loops and model element deletions are not allowed. SyVOLT proves
+contracts in an input-independent manner, relying only on the specification of the
+transformation. The approach is sound and complete, as described
+in~\cite{Lucio2014}.
+
+
+
+\subsection{Integration with Eclipse / Graphical Modelling of Contracts}
+
+Eclipse is a popular development environment, as many model transformation
+tools such as ATL, DSLTrans~\cite{Barroca2011} and
+EGL\footnote{http://www.eclipse.org/epsilon/} are integrated with the Eclipse Modeling Framework\footnote{https://eclipse.org/modeling/emf/}
+(EMF). To take advantage of this ecosystem, SyVOLT integrates with EMF to represent models in a multitude of syntaxes, from
+graphical to textual. The modeler may then operate in their preferred syntax, although the authors suggest that the visual representation of a contract in the SyVOLT editor allows for intuitive understanding of the contract's meaning.
+
+%\subsection{Graphical Modelling of Model Transformation Contracts}
+
+
+
 %If a textual (logical or mathematical) editor where to be used, the user would
 %need an extra system of identifiers to correctly prescribe the associations
 % between pre and post-condition elements whereas in the visual representation, the user graphically builds the associations between those elements.
@@ -19,6 +40,28 @@ the user to intuitively understand its meaning.
 
 %The visual representation of a contract has all the necessary information to
 % derive the correct logical expression to be used by the internal SyVolt prover.
+
+\begin{figure}
+%\centering
+%\includegraphics[width=0.5\textwidth]{figures/output}
+
+\scriptsize
+\tt
+Proving contracts:
+
+Contract ``daughterMother'' holds for all input models!
+\\
+Contract ``motherFather'' does NOT hold for all input models! The contract fails on the following Path Conditions:
+[`EmptyPathCondition\_RootRule\_FatherRule\_MotherRule', ...]
+
+The smallest Path Conditions where the contract fails are:
+[`EmptyPathCondition\_FatherRule\_MotherRule']
+\\
+Time to verify 2 contracts: 11.6834638966 seconds.
+%It took 0.769201040268 seconds to build the set of path conditions.
+\caption{Sample results of the contract prover}
+\label{fig:output}
+\end{figure}
 
 \subsection{Push-Button Proofs}
 \label{sec:push_button_proofs}
@@ -31,6 +74,15 @@ provide the results to the user within the Eclipse environment. This allows the 
 Eclipse environment, where he or she develops the contracts and the
 model transformations.
 
+%Figure~\ref{fig:output} shows an example of the output presented to the user, detailing which contracts hold and do not hold.
+
+\subsection{Counter-Examples}
+
+When a given contract does not hold on a given model transformation,
+SyVOLT can produce additional information for the user to pinpoint where
+the contract's violation occurs. This information is in
+the form of the set of model transformation rules used to build a particular
+path condition for which the contract fails, as seen in Figure~\ref{fig:output}. A counter-example is any input model where this set of rules would execute.
 
 
 
@@ -65,37 +117,7 @@ the model transformation's computations through an abstration relation.
 
 
 
-\subsection{Input Independence and Exhaustiveness} 
 
-Our technique is exhaustive, in the sense that whenever a contract holds, it
-will hold for all possible input models to a transformation. This is possible
-because SyVOLT operates on specifications of outplace model transformations,
-where unbounded loops and model element deletions are not allowed. SyVOLT proves
-contracts in an input-independent manner, relying only on the specification of the
-transformation. The approach is sound and complete, as described
-in~\cite{Lucio2014}.  Figure~\ref{fig:output} shows an example of the output presented to the user, detailing which contracts hold and do not hold.
-
-\begin{figure}
-%\centering
-%\includegraphics[width=0.5\textwidth]{figures/output}
-
-\scriptsize
-\tt
-Proving contracts:
-
-Contract ``daughterMother'' holds for all input models!
-\\
-Contract ``motherFather'' does NOT hold for all input models! The contract fails on the following Path Conditions:
-[`EmptyPathCondition\_RootRule\_FatherRule\_MotherRule', ...]
-
-The smallest Path Condition where the contract fails are:
-[`EmptyPathCondition\_FatherRule\_MotherRule']
-\\
-Time to verify 2 contracts: 11.6834638966 seconds.
-%It took 0.769201040268 seconds to build the set of path conditions.
-\caption{Sample results of the contract prover}
-\label{fig:output}
-\end{figure}
 
 \subsection{Proving Contracts about ATL Model Transformations}
 The Atlas Transformation Language\footnote{http://eclipse.org/atl} (ATL) is
@@ -111,16 +133,14 @@ future work.
 We have some evidence that SyVOLT scales to transformations of practical
 interest. In particular we have applied DSLTrans transformations with up to
 over 60 rules, and ATL transformations with up to 13 rules~\cite{Oakes}. From our own
-experience with DSLTrans, the size of a DSLTrans transformations varies widely,
+experience with DSLTrans, the size of a DSLTrans transformation varies widely,
 with the average size ranging from 10 up to 50 rules. The average size of an ATL
 transformation is around 20 rules. \levi{cite Manuel's paper??}.
 Even though our technique is exhaustive, our approach takes relatively short
 amounts of time to prove contracts. For example, our experiments with
-transformation from the ATL
-Zoo\footnote{http://www.eclipse.org/atl/atlTransformations/}~\cite{Oakes} show that contracts can be verified within seconds. In 
+transformations from the ATL Zoo~\cite{Oakes} show that contracts can be verified within seconds.
 
-Gehan Selim's PhD thesis~\cite{Selim2015}
-provides further evidence of SyVOLT's speed in verifying a relatively large model transformation
+Gehan Selim's PhD thesis~\cite{Selim2015} provides further evidence of SyVOLT's speed, by verifying a relatively large model transformation
 for giving semantics to the UML-RT language in terms of the Kiltera process
 language~\cite{PosseDingel2014}. SyVOLT's symbolic execution engine is fully
 homegrown~\cite{LucioVang} and does not depend on third-party solvers. Although
@@ -131,13 +151,7 @@ space and time economy.
 similar approaches based on SAT solvers.
 
 
-\subsection{Counter-Examples}
 
-When a given contract does not hold on a given model transformation,
-SyVOLT can produces additional information for the user to pinpoint where
-the contract's violation occurs. This information is in
-the form of the set of model transformation rules used to build a particular
-path condition for which the contract fails, as seen in Figure~\ref{fig:output}. A counter-example is any input model where this set of rules would execute.
 
 %  This means that any input model that belongs to the family of the
 % counter-example - i.e., fits the description given by the contract proving
@@ -149,14 +163,7 @@ path condition for which the contract fails, as seen in Figure~\ref{fig:output}.
 % in the future.
 
 
-\subsection{Integration with Eclipse}
 
-Eclipse is a popular development environment, as many model transformation
-tools such as ATL, DSLTrans~\cite{Barroca2011} and
-EGL\footnote{http://www.eclipse.org/epsilon/} are integrated with the Eclipse Modeling Framework\footnote{https://eclipse.org/modeling/emf/}
-(EMF). To take advantage of this
-ecosystem, SyVOLT integrates with EMF to represent models in a multitude of syntaxes, from
-graphical to textual. The modeler may then operate in their preferred syntax.
 
 %, and this makes the interaction with SyVOLT easier since the modeler
 %can use the model editor that he/she finds most convenient.
