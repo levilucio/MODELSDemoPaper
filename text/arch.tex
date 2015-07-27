@@ -1,9 +1,4 @@
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{figures/tooling_arch}
-\caption{The architecture of the SyVOLT tool}
-\label{fig:arch}
-\end{figure}
+
 
 The guiding principle of the McGill Unversity Modelling, Design, and Simulation Lab is that all
 tools and processes should be explicitly modelled at an appropriate abstraction level.
@@ -81,15 +76,20 @@ to perform the typical graph manipulation operations.
 % Section~\ref{sec:push_button_proofs}).\\
 \end{itemize}
 
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/tooling_arch}
+\caption{The architecture of the SyVOLT tool}
+\label{fig:arch}
+\end{figure}
+
 % Elements of the architecture that could not be built using model driven tools
 % (for lack of technological availability) have been developed using model-driven
 % principles.
 
 Figure~\ref{fig:arch} shows the architecture of our tool. Two essential
-blocks are depicted: the graphical Eclipse front-end and the proof engine
-back-end. While the front-end is responsible for the interaction with SyVOLT's
-user, the back-end implements the algorithm for building the proofs of the
-contracts. The front-end and the back-end communicate in the following way:
+blocks are depicted: the graphical Eclipse front-end for user interaction and the proof engine
+back-end which implements the proving algorithm. The front-end and the back-end communicate in the following way:
 in the left-to-right direction, a number of artifacts (models and model
 transformations) are synthesized from the graphical representations of the
 DSLTrans transformations and of the SyVOLT contracts, and passed to the
@@ -104,6 +104,14 @@ SyVOLT's architectural components described in Figure~\ref{fig:arch} are
 orchestrated by an ANT script from within Eclipse. This script makes sure all components execute in the
 right order, provides the glue between them and allows contract proof to run
 fully automatically at the push of a button.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/eclipse_frontend}
+\caption{The SyVOLT editor within Eclipse}
+\label{fig:eclipse_frontend}
+\end{figure}
+
 
 \subsection*{1. SyVOLT Contract Editor}
 
@@ -154,7 +162,7 @@ editor and serialized in XMI format.
 
 
 
-\subsection*{2. Generating Artifacts for Proof Construction}
+\subsection*{2. Generating Rule and Contract Artifacts}
 \label{sec:gen_models_mt}
 
 The translation of DSLTrans transformations and SyVOLT contracts into Himesis
@@ -197,8 +205,7 @@ represent models and T-Core transformation rules. These classes will be loaded i
 % these are correctly generated.
 
 
-\subsection*{3. Additional Generation of Model Transformations for Proof
-Construction: The PyRamify Script}
+\subsection*{3. Additional Generation of T-Core Model Transformations}
 
 Additional model transformations, other than the ones described in
 Section~\ref{sec:gen_models_mt}, need to be generated for the property proof
@@ -241,15 +248,12 @@ condition.
 
 Once the required artifacts have been produced, the prover moves onto the path
 condition generation step. Path condition generation is operationally achieved
-by executing, following the ordering of the rules in the DSLTrans
-tranformation being analysed, the path condition generation transformations
-(marked (c) in Figure~\ref{fig:arch}).
+by executing the appropriate T-Core transformation rules, following the ordering of the rules in the DSLTrans
+transformation being analysed.
 
 The path condition generation algorithm starts from the empty path condition,
-representing the case where no rules in the transformation have executed. Then,
-as each T-Core transformation in the path condition generation transformations
-set is executed, each rule in the DSLTrans model transformation under analysis
-is combined with the path conditions generated thus far. As each rule is
+representing the case where no rules in the transformation have executed. Then, each rule in the DSLTrans model transformation under analysis
+is combined with the path conditions generated thus far, using the T-Core transformation matcher and rewriter. As each rule is
 considered, the set of path conditions will grow to represent all allowed
 rules combinations. As the execution of a rule in a DSLTrans
 transformation may depend on the previous execution of other rules, such
@@ -272,18 +276,15 @@ transformations in order to exclude impossible rule combinations.
 \subsection*{5. Contract Proof}
 
 The \emph{contract proof} component requires two inputs: the \emph{path
-conditions set} built by the path condition generator (marked (d) is Figure~\ref{fig:arch}); the \emph{property
+conditions set} built by the path condition generator (marked (d) is Figure~\ref{fig:arch}); the \emph{contract
 proof T-Core transformations} (marked (b) is Figure~\ref{fig:arch}).
 
 Pre- / post- condition contracts form an implication, which needs to be
 checked for each path condition provided as input to the contract proof
 component. For a contract to hold on a DSLTrans model transformation, the
 contract's implication should hold for every path condition generated for
-that model transformation. Checking this is achieved by attempting to find for
-each submodel of the path condition that is isomorphic to the pre-condition's model, a submodel
-of the path condition that is isomorphic to the post-condition's model.
-Computing these subgraph isomorphisms is done by the property proof T-Core
-transformations. Note that, in this case, the T-Core transformations are simply a set of matchers, or queries, as no further
+that model transformation. For each submodel of the path condition that is isomorphic to the pre-condition's model, the appropriate property T-Core matcher will try to find a submodel of the path condition that is isomorphic to the post-condition's model.
+ Note that, in this case, the T-Core transformations are simply a set of matchers, or queries, as no further
 editing of the path conditions is necessary during this part of the proof.
 
 % As in for the path condition generation component described in
