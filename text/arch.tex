@@ -7,21 +7,19 @@
 
 The guiding principle of the McGill Unversity Modelling, Design, and Simulation Lab is that all
 tools and processes should be explicitly modelled at an appropriate abstraction level.
-This practice goes in the direction of ensuring that essential
-complexity is the main object of software development and that accidental
-complexity is mitigated.
+This practice ensures that software development effort is targeted at essential complexity, rather than any accidental complexity in the domain.
+
+%This practice goes in the direction of ensuring that essential
+%complexity is the main object of software development and that accidental
+%complexity is mitigated.
 
 SyVOLT's codebase has been developed by applying these principles. We have used
 available model-driven development technology as much as possible, both to
 develop and as a part of SyVOLT itself. In particular, we have made it such that
-the representations of the DSLTrans transformations and the SyVOLT contracts
-manipulated by the proof engine are treated as models. The path conditions
-produced for a given DSLTrans model transformation are equally models. Moreover, given the
-operations required by the algorithm for building a contract proof (described
-in~\cite{Lucio2014}) can be implemented as model manipulations, we have
-operationally encoded them as model transformations.
-In~\cite{LucioVang} how we explain how we use \emph{model transformations to
-verify model transformations} in SyVOLT.
+the DSLTrans transformations, the SyVOLT contracts, and path conditions are all represented and treated as models by the proof engine.
+ Moreover, we have operationally encoded the
+ operations required by the algorithm for building a contract proof (described
+ in~\cite{Lucio2014}) as model transformations~\cite{LucioVang}.
 
 The following model-driven development tools have been used in SyVOLT's
 development:
