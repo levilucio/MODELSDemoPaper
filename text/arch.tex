@@ -5,7 +5,7 @@
 \label{fig:arch}
 \end{figure}
 
-The guiding principle of the Modelling, Design, and Simulation Lab is that all
+The guiding principle of the McGill Unversity Modelling, Design, and Simulation Lab is that all
 tools and processes should be explicitly modelled at an appropriate abstraction level.
 This practice goes in the direction of ensuring that essential
 complexity is the main object of software development and that accidental
@@ -25,7 +25,7 @@ verify model transformations} in SyVOLT.
 
 The following model-driven development tools have been used in SyVOLT's
 development:
-\begin{enumerate}
+\begin{itemize}
 
 %   \item \textbf{AToM$^3$}~\cite{atom3:2002}: AToM$^3$ is a meta-editor for
 %   model-driven development.
@@ -41,7 +41,7 @@ development:
 % %   generated from their graphical representations in the Eclipse front-end.\\
 
   \item \textbf{Himesis}~\cite{Provost2006}: Himesis is a typed graph representation
-  format, built upon the open-source igraph~\footnote{http://igraph.org/} library. 
+  format, built upon the open-source igraph\footnote{http://igraph.org/} library. 
 % Himesis is used for several reasons: independence, efficiency and tool support.
 % Independence is ensured because Himesis is very expressive and also very simple,
 % which means it will not change for the foreseeable future.
@@ -66,14 +66,14 @@ to perform the typical graph manipulation operations.
   T-Core is also explicitly modelled, a T-Core model transformation rule is also
   a (Himesis) model.
 
-  \item \textbf{EMF} (Eclipse Modelling Framework): SyVOLT makes
+  \item \textbf{Eclipse Modelling Framework} (EMF): SyVOLT makes
   use of EMF's E-Core format for the XMI representation of DSLTrans transformations
   and SyVOLT's contracts within the Eclipse editors.
 %   Note that EMF is only used
 %   in the Eclipse front-end, and that Ecore models are converted into
 %   the Himesis format for the contract prover engine to compute the
 %   proofs.\\
-  \item \textbf{EGL} (Epsilon Generation Language): Converting
+  \item \textbf{Epsilon Generation Language} (EGL): Converting
   Ecore models into Himesis models is achieved using EGL, a
   model-to-text transformation language.
 % Besides easy integration with Eclipse and native support of the expressive
@@ -81,7 +81,7 @@ to perform the typical graph manipulation operations.
 % Ant~\footnote{\url{http://ant.apache.org}} build tool, which was used to
 % orchestrate the multiple tools in the proving process (see
 % Section~\ref{sec:push_button_proofs}).\\
-\end{enumerate}
+\end{itemize}
 
 % Elements of the architecture that could not be built using model driven tools
 % (for lack of technological availability) have been developed using model-driven
@@ -93,7 +93,7 @@ back-end. While the front-end is responsible for the interaction with SyVOLT's
 user, the back-end implements the algorithm for building the proofs of the
 contracts. The front-end and the back-end communicate in the following way:
 in the left-to-right direction, a number of artifacts (models and model
-transformations) are syntesized from the graphical representations of the
+transformations) are synthesized from the graphical representations of the
 DSLTrans transformations and of the SyVOLT contracts, and passed to the
 back-end. In the reverse direction, the proof result and counter-examples, if
 any, are passed from the proof engine to the front-end.
@@ -107,12 +107,11 @@ orchestrated by an ANT script from within Eclipse. This script makes sure all co
 right order, provides the glue between them and allows contract proof to run
 fully automatically at the push of a button.
 
-\subsection{SyVOLT Contract Editor (1)}
+\subsection*{1. SyVOLT Contract Editor}
 
 %how it was developed
 The SyVolt contract editor, shown in Figure~\ref{fig:eclipse_frontend}, is
-realized by a set of Eclipse Graphical Modeling Framework (GMF
-\footnote{\url{http://www.eclipse.org/modeling/gmp/}}) plugins, generated using
+realized by a set of Eclipse Graphical Modeling Framework\footnote{\url{http://www.eclipse.org/modeling/gmp/}} (GMF) plugins, generated using
 EuGENia~\cite{Kolovos2010a}.
 
 %how it is used
@@ -157,8 +156,7 @@ editor and serialized in XMI format.
 
 
 
-\subsection{Generating Models and Model Transformations for Proof Construction
-(2)}
+\subsection*{2. Generating Artifacts for Proof Construction}
 \label{sec:gen_models_mt}
 
 The translation of DSLTrans transformations and SyVOLT contracts into Himesis
@@ -168,13 +166,13 @@ representing a DSLTrans transformation (marked (a) in Figure~\ref{fig:arch});
 another one to generate the T-Core model transformation rules necessary to prove
 SyVOLT contracts (marked (b) in Figure~\ref{fig:arch}).
 
-The EGL model-to-text transformations are used to parse the Ecore models of a
+The EGL model-to-text transformations are used to parse the Ecore models of the
 DSLTrans model transformation under analysis and of the contracts to be proved.
 From these Ecore models, the EGL transformations produce a number of Python
-files containing classes that inherit from the Himesis library and that
-represent models and T-Core transformation rules. These classes are loaded from
-disk by the Python interpreter and become models and model transformations in
-memory once they are instanciated by the proof engine back-end.
+classes that inherit from the Himesis library and that
+represent models and T-Core transformation rules. These classes will be loaded in memory and manipulated by the proof engine back-end.
+
+
 % Note that all these artifacts are produced as
 % Python text files containing Himesis format that are needed to automatically
 % perform the required proofs.
@@ -201,8 +199,8 @@ memory once they are instanciated by the proof engine back-end.
 % these are correctly generated.
 
 
-\subsection{Additional Generation of Model Transformations for Proof
-Construction: The PyRamify Script (3)}
+\subsection*{3. Additional Generation of Model Transformations for Proof
+Construction: The PyRamify Script}
 
 Additional model transformations, other than the ones described in
 Section~\ref{sec:gen_models_mt}, need to be generated for the property proof
@@ -240,7 +238,7 @@ condition.
 % model transformation technology that allows moving between models of a given
 % order $n$ and an order $n+1$ is not yet available in the modelling community.
 
-\subsection{Path Condition Generation (4)}
+\subsection*{4. Path Condition Generation}
 \label{sec:path_cond_gen}
 
 Once the required artifacts have been produced, the prover moves onto the path
@@ -273,7 +271,7 @@ transformations in order to exclude impossible rule combinations.
 % condition generation process. Examples of such optimizations are the caching of
 % expensive match operations, or the parallelization of the path condition generation algorithm. 
  
-\subsection{Contract Proof (5)}
+\subsection*{5. Contract Proof}
 
 The \emph{contract proof} component requires two inputs: the \emph{path
 conditions set} built by the path condition generator (marked (d) is Figure~\ref{fig:arch}); the \emph{property
@@ -286,7 +284,7 @@ contract's implication should hold for every path condition generated for
 that model transformation. Checking this is achieved by attempting to find for
 each submodel of the path condition that is isomorphic to the pre-condition's model, a submodel
 of the path condition that is isomorphic to the post-condition's model.
-Computing these sugraph isomorphisms is done by the property proof T-Core
+Computing these subgraph isomorphisms is done by the property proof T-Core
 transformations. Note that, in this case, the T-Core transformations are simply a set of matchers, or queries, as no further
 editing of the path conditions is necessary during this part of the proof.
 
