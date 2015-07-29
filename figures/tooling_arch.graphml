@@ -529,10 +529,10 @@ Set
     <node id="n32">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="312.83264778683304" y="13.444350282486141"/>
+          <y:Geometry height="35.98395769955076" width="37.78046031014347" x="309.04477629595584" y="-52.05898863328494"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="7.241547492937855" y="2.878266242937869">1<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="11.83163640507172" y="6.5701038497753785">1<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -546,10 +546,10 @@ Set
     <node id="n33">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="650.0703383834625" y="-153.8"/>
+          <y:Geometry height="35.98395769955076" width="37.78046031014347" x="650.0703383834625" y="-171.25347095465747"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="7.241547492937912" y="2.8782662429378547">2<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="11.831636405071777" y="6.570103849775364">2<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -563,10 +563,10 @@ Set
     <node id="n34">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="1034.5754371498733" y="-153.8"/>
+          <y:Geometry height="35.98395769955076" width="37.78046031014347" x="1024.0932062081695" y="-171.25347095465747"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="7.241547492937798" y="2.8782662429378547">2<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="11.831636405071777" y="6.570103849775364">2<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -580,10 +580,10 @@ Set
     <node id="n35">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="489.127153535733" y="105.2229356801389"/>
+          <y:Geometry height="37.038602781399476" width="39.80801565599862" x="482.45570235480614" y="96.14223707083862"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="7.241547492937855" y="2.8782662429378547">3<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="12.845414077999294" y="7.097426390699738">3<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -597,10 +597,10 @@ Set
     <node id="n36">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="667.141420493884" y="255.38723888164515"/>
+          <y:Geometry height="35.98395769955076" width="39.80801565599862" x="657.0687700582876" y="236.8695596117629"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="7.241547492937912" y="2.8782662429378547">4<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="12.845414077999294" y="6.570103849775364">4<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -614,10 +614,10 @@ Set
     <node id="n37">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="906.2641626278944" y="255.38723888164515"/>
+          <y:Geometry height="37.038602781399504" width="39.80801565599862" x="895.0564294577715" y="246.9489185861214"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="7.241547492937912" y="2.8782662429378547">5<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.1171875" x="12.845414077999294" y="7.0974263906997805">5<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -631,14 +631,15 @@ Set
     <node id="n38">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="296.9324891153261" y="296.25519165105356"/>
+          <y:Geometry height="30.0" width="30.0" x="316.82523660609934" y="6.056245216893416"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="234.7578125" x="-87.37890625" y="4.0">Graphical Eclipse Front-End<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="18" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="46.3984375" modelName="custom" textColor="#000000" visible="true" width="162.484375" x="-66.2421875" y="-8.19921875">Eclipse Graphical
+Front-End<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
-              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="0.5" nodeRatioY="-0.5" offsetX="0.0" offsetY="4.0" upX="0.0" upY="-1.0"/>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
           <y:Shape type="rectangle"/>
@@ -648,10 +649,10 @@ Set
     <node id="n39">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="30.0" x="750.6474959612278" y="502.99615068671267"/>
+          <y:Geometry height="30.0" width="30.0" x="764.7826651529588" y="-130.2346153846155"/>
           <y:Fill hasColor="false" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="193.5234375" x="-81.76171875" y="3.15625">Proof Engine Back-End<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="18" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="25.19921875" modelName="custom" textColor="#000000" visible="true" width="217.2138671875" x="-93.60693359375" y="0.80078125">Proof Engine Back-End<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -665,10 +666,10 @@ Set
     <node id="n40">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="650.0703383834624" y="-37.79643633202974"/>
+          <y:Geometry height="35.98395769955076" width="37.78046031014358" x="650.0703383834624" y="-37.79643633202974"/>
           <y:Fill color="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="12.8359375" x="7.882172492937912" y="2.878266242937869">a<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="12.8359375" x="12.472261405071777" y="6.5701038497753785">a<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -682,10 +683,10 @@ Set
     <node id="n41">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="489.127153535733" y="202.5422370708386"/>
+          <y:Geometry height="37.038602781399476" width="37.67284646426779" x="484.59087154653696" y="202.5422370708386"/>
           <y:Fill color="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="12.1953125" x="8.202484992937855" y="2.8782662429378547">c<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="12.1953125" x="12.738766982133882" y="7.097426390699752">c<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -699,10 +700,10 @@ Set
     <node id="n42">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="876.8669642857146" y="105.22293568013889"/>
+          <y:Geometry height="37.038602781399504" width="37.78046031014358" x="863.2932062081695" y="105.22293568013889"/>
           <y:Fill color="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.0703125" x="7.264984992937912" y="2.878266242937869">b<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.0703125" x="11.855073905071777" y="7.097426390699766">b<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -716,10 +717,10 @@ Set
     <node id="n43">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="28.600282485875738" width="28.600282485875738" x="763.3171721080889" y="292.02312038244224"/>
+          <y:Geometry height="35.98395769955076" width="37.67284646426779" x="761.2485727290939" y="284.6394451687672"/>
           <y:Fill color="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.0703125" x="7.264984992937912" y="2.8782662429378547">d<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.84375" modelName="custom" textColor="#000000" visible="true" width="14.0703125" x="11.801266982133939" y="6.570103849775364">d<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
