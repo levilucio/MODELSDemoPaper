@@ -128,24 +128,19 @@ the model transformation's computations through an abstraction relation.
 
 \subsection{Proving Contracts about ATL Model Transformations}
 The Atlas Transformation Language\footnote{http://eclipse.org/atl} (ATL) is
-commonly-used in both industry and academia applications. In order to extend our approach into these domains, we
+commonly-used in both industry and academia applications. In order to enable contract proving on ATL transformations, we
 have developed a higher-order transformation that is able to automatically
 transform declarative ATL transformations into our transformation language
-DSLTrans. This allows the user to also prove contracts on ATL transformations\footnote{See \cite{Oakes} for the
-constructs of ATL that SyVOLT can verify.}. Extending this capability to SyVOLT's user interface is
-future work.
+DSLTrans~\cite{Oakes}. In future work, we will integrate this higher-order transformaion into SyVOLT's user interface.
 
 \subsection{Scalability and Speed}
 
 We have some evidence that SyVOLT scales to transformations of practical
-interest. In particular we have applied DSLTrans transformations with up to
+interest. In particular we have verified contracts on DSLTrans transformations with up to
 over 60 rules, and ATL transformations with up to 13 rules~\cite{Oakes}. From our own
-experience with DSLTrans, the size of a DSLTrans transformation varies widely,
-with the average size ranging from 10 up to 50 rules. The average size of an ATL
+experience, the size of a DSLTrans transformation ranges from 10 up to 50 rules, while the average size of an ATL
 transformation is around 20 rules~\cite{KuselSWRSK13}.
-Even though our technique is exhaustive, our approach takes relatively short
-amounts of time to prove contracts. For example, our experiments with
-transformations from the ATL Zoo~\cite{Oakes} show that contracts can be verified within seconds.
+Even though our technique is exhaustive, our experiments show that verification can be performed within seconds.
 
 Gehan Selim's PhD thesis~\cite{Selim2015} provides further evidence of SyVOLT's speed, by verifying a relatively large model transformation
 for giving semantics to the UML-RT language in terms of the Kiltera process
