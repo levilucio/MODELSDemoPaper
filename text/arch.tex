@@ -4,8 +4,8 @@ The guiding principle of the McGill Unversity Modelling, Design, and Simulation
 Lab is that all tools and processes should be explicitly modelled at an
 appropriate abstraction level.
 This practice ensures that software development effort is targeted at the
-problem's essential complexity, while alleviating accidental complexity
-introduced by the computational platforms used.
+problem's essential complexity, while alleviating other complexity
+introduced by computational platforms used.
 
 %This practice goes in the direction of ensuring that essential
 %complexity is the main object of software development and that accidental
@@ -90,9 +90,11 @@ to perform the typical graph manipulation operations.
 % (for lack of technological availability) have been developed using model-driven
 % principles.
 
-Figure~\ref{fig:arch} shows the architecture of our tool. Two essential
-blocks are depicted: the graphical Eclipse front-end for user interaction and the proof engine
-back-end which implements the proving algorithm. The front-end and the back-end communicate in the following way:
+Figure~\ref{fig:arch} shows the architecture of our tool, where
+squares containing gears represent computations and containing squares
+containing no gears represent produced and consumed data.
+Two essential blocks are depicted: the graphical Eclipse front-end for user
+interaction and the proof engine back-end which implements the proving algorithm. The front-end and the back-end communicate in the following way:
 in the left-to-right direction, a number of artifacts (models and model
 transformations) are synthesized from the graphical representations of the
 DSLTrans transformations and of the SyVOLT contracts, and passed to the
@@ -252,14 +254,13 @@ condition.
 
 Once the required artifacts have been produced, the prover moves onto the path
 condition generation step. Path condition generation is operationally achieved
-by executing the appropriate T-Core transformation rules, following the ordering of the rules in the DSLTrans
-transformation being analysed.
-
+by executing the appropriate T-Core transformation rules (artifact (c) in
+Figure~\ref{fig:arch}), following the ordering of the rules in the DSLTrans transformation being analysed.
 The path condition generation algorithm starts from the empty path condition,
 representing the case where no rules in the transformation have executed. Then, each rule in the DSLTrans model transformation under analysis
-is combined with the path conditions generated thus far, using the T-Core transformation matcher and rewriter. As each rule is
-considered, the set of path conditions will grow to represent all allowed
-rules combinations. As the execution of a rule in a DSLTrans
+is combined with the path conditions generated thus far, using a T-Core
+transformation rule matcher and rewriter. As each rule is considered, the set
+of path conditions will grow to represent all allowed rules combinations. As the execution of a rule in a DSLTrans
 transformation may depend on the previous execution of other rules, such
 dependencies are verified by the path condition generation
 transformations in order to exclude impossible rule combinations.
@@ -282,14 +283,15 @@ transformations in order to exclude impossible rule combinations.
 The \emph{contract proof} component requires two inputs: the \emph{path
 conditions set} built by the path condition generator (marked (d) is Figure~\ref{fig:arch}); the \emph{contract
 proof T-Core transformations} (marked (b) is Figure~\ref{fig:arch}).
-
-Pre- / post- condition contracts form an implication, which needs to be
-checked for each path condition provided as input to the contract proof
-component. For a contract to hold on a DSLTrans model transformation, the
-contract's implication should hold for every path condition generated for
-that model transformation. For each submodel of the path condition that is isomorphic to the pre-condition's model, the appropriate property T-Core matcher will try to find a submodel of the path condition that is isomorphic to the post-condition's model.
- Note that, in this case, the T-Core transformations are simply a set of matchers, or queries, as no further
-editing of the path conditions is necessary during this part of the proof.
+Pre- / post- condition contracts form an implication, which needs to be checked
+for each path condition provided as input to the contract proof component. For a
+contract to hold on a DSLTrans model transformation, the contract's implication
+should hold for every path condition generated for that model transformation.
+For each submodel of the path condition that is isomorphic to the
+pre-condition's model, the appropriate property T-Core matcher will try to find
+a submodel of the path condition that is isomorphic to the post-condition's
+model. This is achived using the contract proof T-Core transformations, which
+consist of a set of queries to path condition models.
 
 % As in for the path condition generation component described in
 % Section~\ref{sec:path_cond_gen}, the contract proof algorithm has also been
