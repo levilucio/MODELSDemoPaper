@@ -1,8 +1,11 @@
 
 
-The guiding principle of the McGill Unversity Modelling, Design, and Simulation Lab is that all
-tools and processes should be explicitly modelled at an appropriate abstraction level.
-This practice ensures that software development effort is targeted at essential complexity, rather than any accidental complexity in the domain.
+The guiding principle of the McGill Unversity Modelling, Design, and Simulation
+Lab is that all tools and processes should be explicitly modelled at an
+appropriate abstraction level.
+This practice ensures that software development effort is targeted at the
+problem's essential complexity, while alleviating accidental complexity
+introduced by the computational platforms used.
 
 %This practice goes in the direction of ensuring that essential
 %complexity is the main object of software development and that accidental
@@ -176,7 +179,8 @@ The EGL model-to-text transformations are used to parse the Ecore models of the
 DSLTrans model transformation under analysis and of the contracts to be proved.
 From these Ecore models, the EGL transformations produce a number of Python
 classes that inherit from the Himesis library and that
-represent models and T-Core transformation rules. These classes will be loaded in memory and manipulated by the proof engine back-end.
+represent models and T-Core transformation rules. These classes will be
+subsequently loaded in memory and manipulated by the proof engine back-end.
 
 
 % Note that all these artifacts are produced as
@@ -220,7 +224,7 @@ This additional model transformation generation step is achieved by the PyRamify
 component. PyRamify is a Python script that takes as input Himesis graphs
 representing the rules in the transformation. Then, T-Core matchers and
 rewriters for each rule are produced. While matchers allow the contract prover to determine
-if and how rules might execute over a path condition under construction,
+if and how rules might combine with a path condition under construction,
 rewriters combine the right-hand side of a DSLTrans rule with that same path
 condition.
 
