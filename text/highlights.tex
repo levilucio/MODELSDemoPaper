@@ -6,17 +6,19 @@ SyVOLT proves pre-/post-condition contracts hold for a model transformation.
 Such contracts establish relations between patterns occurring in input and output
 models of a model transformation. If a contract holds, a formal guarantee
 exists that whenever a transformation's input model contains the pattern
-specified in the pre-condition of the contract, its the output model contains
+specified in the pre-condition of the contract, the transformation's output model will contain
 the pattern specified in the contract's post-condition. Contracts can 
 optionally include traceability relations between input and output patterns. 
 
-Our technique is exhaustive, in the sense that whenever a contract holds, it
-will hold for all possible input models to a transformation. This is possible
+Our technique is exhaustive and input-independent, in the sense that whenever a contract holds, it
+will hold for all possible input models for that transformation. This is possible
 because SyVOLT operates on specifications of outplace model transformations,
-where unbounded loops and model element deletions are not allowed. SyVOLT proves
-contracts in an input-independent manner, relying only on the specification of the
-transformation. The approach is sound and complete, as described
+where unbounded loops and model element deletions are not allowed. The approach is sound and complete, as described
 in~\cite{Lucio2014}.
+
+%SyVOLT proves
+%contracts in an input-independent manner, relying only on the specification of the
+%transformation.
 
 
 
