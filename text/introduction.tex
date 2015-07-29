@@ -7,11 +7,11 @@
 % Because of the importance of graph-based model transformations both in the
 % academic and the industrial arenas, their verification is of prime importance.
 In this paper we introduce SyVOLT (Symbolic Verifier of mOdeL Transformations),
-an Eclipse plugin that allows verifying pre-/post- condition structural
+an Eclipse plugin that allows verifying pre-/post-condition structural
 contracts on model transformations, specified in the DSLTrans transformation
 language. SyVOLT's operation relies on a theoretical framework has been
 developed for the DSLTrans model transformation language. In this framework,
-pre- / post- condition contracts can be shown to either hold for all input/output pairs resulting from
+pre-/post-condition contracts can be shown to either hold for all input/output pairs resulting from
 executing a given DSLTrans model transformation, or not to hold for at least
 one of those input/output pairs~\cite{Lucio2014}.
 
@@ -32,9 +32,8 @@ on different kind of contracts such as model fragments~\cite{Mottu2008}, graph p
 Triple Graph Grammars (TGGs)~\cite{WieberAS14} or dedicated testing
 languages~\cite{Garcia-Dominguez11}. In contrast to these approaches, SyVOLT
 allows for contracts to be proved for all possible transformation executions, i.e., for all possible
-input models. However, we also keep same implication idea: the pre-condition of
-a contract sets constraints on the input models to the transformation, and then,
-the post-condition defines constraints on the output model.
+input models. However, we also keep the same implication idea: the pre-condition of
+a contract sets constraints on the input models to the transformation, and the post-condition defines constraints on the output model.
 
 The tool described in \cite{Buettner2013} automatically transforms
 transformations in a number of transformation languages (such as ATL) to OCL. Verification is then
