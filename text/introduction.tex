@@ -19,36 +19,34 @@ one of those input/output pairs~\cite{Lucio2014}.
 % automatic property prover based on this theory has been shown to be applicable
 % to industrial problems~\cite{Selim2014}.
 
-There has been already an extensive work on verifying different aspects of model
-transformations, e.g., cf.~\cite{AmraniLSCDVTC12} for a survey.
-With respect to the contribution of this paper, we summarize previous
-contributions for checking different kinds of contracts for model
-transformations, where the concrete approaches range from testing to
-verification approaches.
-
-In~\cite{Gogolla2011,Vallecillo2012} the authors describe a method where
-`Tracts' can be specified for model transformations. Tracts define a set of
-constraints on the source and target metamodels, a set of source-target
-constraints, and a tract test suite, i.e., a collection of source models
+Extensive work exists on the verification of different aspects of model
+transformations~\cite{AmraniLSCDVTC12}. In~\cite{Vallecillo2012} the
+authors describe a method where `Tracts' can be specified for model
+transformations. Tracts resemble SyVOLT's contracts and define a set
+of constraints on the source and target metamodels, a set of source-target constraints, and a tract test suite, i.e., a collection of source models
 satisfying the source constraints. The accompanying TractsTool can then
-automatically transform the source models into the target metamodel, and
-subsequently verify that the source/target model pairs satisfy the constraints.
-The advantages of this are that the approach is not computationally-intensive,
-as tests can be narrowly focused in a modular way. Besides the Tracts approach,
-there are several other approaches supporting the testing of model
-transformations based on different kind of contracts such as model
-fragments~\cite{Mottu2008}, graph patterns~\cite{Guerra12,BaloghBCGHMPPRVa10},
-Triple Graph Grammars (TGGs)~\cite{WieberAS14}, dedicated testing
-languages~\cite{Kolovos06,Garcia-Dominguez11}, or as used in Tracts OCL
-constraints~\cite{Cariou09}, and even a combination of these mentioned
-approaches~\cite{Pele}. While these mentioned approaches resort to black-box
-based testing, there are also approaches which allow for white-box based testing
-of model transformations such as~\cite{GonzalezC12}.
-
-In contrast to testing approaches, SyVOLT allows for contracts to
-be proved for all possible transformation executions, i.e., for all possible
+automatically test the transformation by verifying if all source/target model
+pairs satisfy the constraints in the tract test suite.
+Several other approaches support the testing of model transformations based
+on different kind of contracts such as model fragments~\cite{Mottu2008}, graph patterns~\cite{Guerra12,BaloghBCGHMPPRVa10},
+Triple Graph Grammars (TGGs)~\cite{WieberAS14} or dedicated testing
+languages~\cite{Garcia-Dominguez11}. In contrast to these approaches, SyVOLT
+allows for contracts to be proved for all possible transformation executions, i.e., for all possible
 input models. However, we also keep same implication idea: the pre-condition of
 a contract sets constraints on the input models to the transformation, and then,
 the post-condition defines constraints on the output model.
+
+The tool described in \cite{Buettner2013} automatically transforms
+transformations in a number of transformation languages (such as ATL) to OCL. Verification is then
+done using a model finder which will attempt to find a counter-example to the
+property being proved. Anastasakis et al.~\cite{Anastasakis07}
+translate model transformations to Alloy in order to verify if given
+assertions hold for the given transformations. Both these
+approaches attempt to exhaustively verify the model transformation, as SyVOLT
+does. However, while SyVOLT guarantees that all counter-examples to a contract
+can always found, this is not granted by the two approaches introduced above.
+
+
+
 
 
