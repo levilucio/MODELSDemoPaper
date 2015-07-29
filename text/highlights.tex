@@ -24,11 +24,15 @@ in~\cite{Lucio2014}.
 
 \subsection{Integration with Eclipse / Graphical Modelling}
 
-Eclipse is a popular development environment, as many model transformation
-tools such as ATL, DSLTrans~\cite{Barroca2011} and
-EGL\footnote{http://www.eclipse.org/epsilon/} are integrated with the Eclipse Modeling Framework\footnote{https://eclipse.org/modeling/emf/}
-(EMF). To take advantage of this ecosystem, SyVOLT integrates with EMF to represent models in a multitude of syntaxes, from
-graphical to textual. The modeler may then operate in their preferred syntax, although the authors suggest that the visual representation of a contract in the SyVOLT editor allows for intuitive understanding of the contract's meaning.
+Eclipse is a popular development environment, as many model transformation tools
+such as ATL, DSLTrans~\cite{Barroca2011} and
+EGL\footnote{http://www.eclipse.org/epsilon/} are integrated with the Eclipse
+Modeling Framework\footnote{https://eclipse.org/modeling/emf/} (EMF). To take
+advantage of this ecosystem, SyVOLT integrates with EMF to represent models in a
+multitude of syntaxes, from graphical to textual. The modeler may then operate
+in their preferred syntax, although the authors suggest that the visual
+representation of a contract in the SyVOLT editor allows for intuitive
+understanding of the contract's meaning.
 
 %\subsection{Graphical Modelling of Model Transformation Contracts}
 
@@ -101,7 +105,7 @@ Because a path condition contains a number of rules, it represents the execution
 of the model transformation over any input model all those rules match on.
 Contracts of interest are proved on the set of path conditions built for a
 model transformation, and are extrapolated to the infinite set of
-the model transformation's computations through an abstration relation.
+the model transformation's computations through an abstraction relation.
 
 % Our model transformation verification technique relies on models as the
 % means to internally represent both symbolic executions and contracts. SyVOLT
@@ -138,7 +142,7 @@ interest. In particular we have applied DSLTrans transformations with up to
 over 60 rules, and ATL transformations with up to 13 rules~\cite{Oakes}. From our own
 experience with DSLTrans, the size of a DSLTrans transformation varies widely,
 with the average size ranging from 10 up to 50 rules. The average size of an ATL
-transformation is around 20 rules. \levi{cite Manuel's paper??}.
+transformation is around 20 rules~\cite{KuselSWRSK13}.
 Even though our technique is exhaustive, our approach takes relatively short
 amounts of time to prove contracts. For example, our experiments with
 transformations from the ATL Zoo~\cite{Oakes} show that contracts can be verified within seconds.
