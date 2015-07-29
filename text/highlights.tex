@@ -22,7 +22,7 @@ in~\cite{Lucio2014}.
 
 
 
-\subsection{Integration with Eclipse / Graphical Modelling of Contracts}
+\subsection{Integration with Eclipse / Graphical Modelling}
 
 Eclipse is a popular development environment, as many model transformation
 tools such as ATL, DSLTrans~\cite{Barroca2011} and
@@ -68,7 +68,7 @@ fails on the following Path Conditions:
 
 \subsection{Push-Button Proofs}
 \label{sec:push_button_proofs}
-The proving process for a SyVOLT contract is fully automatic and the all of the
+The proving process for a SyVOLT contract is fully automatic and all of the
 approach's formal details are completely hidden from the user. Once the
 transformation and the contracts of interest are created, one command will start
 the property proving process. This process will automatically create all
@@ -85,7 +85,7 @@ When a given contract does not hold on a given model transformation,
 SyVOLT can produce additional information for the user to pinpoint where
 the contract's violation occurs. This information is in
 the form of the set of model transformation rules used to build a particular
-path condition for which the contract fails, as seen in Figure~\ref{fig:output}. A counter-example is any input model where this set of rules would execute.
+path condition for which the contract fails, as seen in Figure~\ref{fig:output}. A counter-example is any input model where this set of rules would execute. For the example in Figure~\ref{fig:output}, the user is alerted that the contract \textit{motherFather} will fail when only the \textit{mother} and \textit{father} rules execute in the transformation.
 
 
 
