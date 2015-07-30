@@ -5,7 +5,7 @@ Lab is that all tools and processes should be explicitly modelled at an
 appropriate abstraction level.
 This practice ensures that software development effort is targeted at the
 problem's essential complexity, while alleviating complexity
-introduced by computational platforms used.
+introduced by the computational platforms used.
 
 %This practice goes in the direction of ensuring that essential
 %complexity is the main object of software development and that accidental
@@ -91,7 +91,7 @@ to perform the typical graph manipulation operations.
 % principles.
 
 Figure~\ref{fig:arch} shows the architecture of our tool, where
-squares containing gears represent computations and containing squares
+squares containing gears represent computations and squares
 containing no gears represent produced and consumed data.
 Two essential blocks are depicted: the graphical Eclipse front-end for user
 interaction and the proof engine back-end which implements the proving algorithm. The front-end and the back-end communicate in the following way:
@@ -107,7 +107,7 @@ component to describe its function and the technologies employed in its developm
 
 SyVOLT's architectural components described in Figure~\ref{fig:arch} are
 orchestrated by an ANT script from within Eclipse. This script makes sure all components execute in the
-right order, provides the glue between them and allows contract proof to run
+right order, provides the glue between them \cgg{I would remove the ``provides the glue between them'' clause, as it adds little meaning to the sentence and seems redundant.} and allows contract proof to run
 fully automatically at the push of a button.
 
 \begin{figure}
@@ -128,7 +128,7 @@ EuGENia~\cite{Kolovos2010a}.
 %how it is used
 The user can prescribe contracts (the gray rectangle in the left-hand side of
 Figure~\ref{fig:eclipse_frontend}) and propositional logic properties involving
-contracts (the white rectangle in the center of the figure) using the toolbox (right-hand side of Figure~\ref{fig:eclipse_frontend}).
+contracts (the white rectangle in the center of the figure \cgg{There is no longer a white rectange with the propositional properties. Where did this picture go? Should we remove this clause or update the picture?}) using the toolbox (right-hand side of Figure~\ref{fig:eclipse_frontend}).
 
 % what's it like internally.
 Internally, the graphical editor reads and write two models: the domain model and the graphical model.
@@ -171,14 +171,14 @@ editor and serialized in XMI format.
 \label{sec:gen_models_mt}
 
 The translation of DSLTrans transformations and SyVOLT contracts into Himesis
-models and model transformation rules was achieved using the EGL. More specifically, two EGL model-to-text model
+models and model transformation rules was achieved using the EGL. Specifically, two EGL model-to-text
 transformations were used: one to generate the Himesis models
 representing a DSLTrans transformation (marked (a) in Figure~\ref{fig:arch});
-another one to generate the T-Core model transformation rules necessary to prove
+and another one to generate the T-Core model transformation rules necessary to prove
 SyVOLT contracts (marked (b) in Figure~\ref{fig:arch}).
 
 The EGL model-to-text transformations are used to parse the Ecore models of the
-DSLTrans model transformation under analysis and of the contracts to be proved.
+DSLTrans model transformation under analysis and of the contracts to be proved \cgg{The EGL does not parse the Ecore models. Parsing is converting the concrete syntax into an abstract syntax. The Ecore models are parsed by the EMF runtime, which converts the text (xml) into a memory representation. The EGL is more like a visitor of the abstract syntax tree of the Ecore models. I would remove this sentence and start the next one as ``the EGL transformations produce...''}.
 From these Ecore models, the EGL transformations produce a number of Python
 classes that inherit from the Himesis library and that
 represent models and T-Core transformation rules. These classes will be
@@ -214,8 +214,8 @@ subsequently loaded in memory and manipulated by the proof engine back-end.
 \subsection*{3. Additional Generation of T-Core Model Transformations}
 
 Additional model transformations, other than the ones described in
-Section~\ref{sec:gen_models_mt}, need to be generated for the property proof
-algorithm to execute. These are the \emph{path condition generation} T-Core
+Section~\ref{sec:gen_models_mt}\cgg{Unumbered sections cannot be refered to like this. Either we use ``in the previous subsection'' or we use ``2'' to refer to that section.}, need to be generated for the property proof
+algorithm to execute\cgg{In the previous section, only one model transformation was described as being generated: the dsltrans. The contract, at least in the way it is described, does not correspond to a model transformation.}. These are the \emph{path condition generation} T-Core
 model transformations (marked (c) in Figure~\ref{fig:arch}) that are needed to
 perform the model manipulations for a set of path conditions. These model
 transformation blocks allow combining the rules of a DSLTrans model
@@ -255,7 +255,8 @@ condition.
 Once the required artifacts have been produced, the prover moves onto the path
 condition generation step. Path condition generation is operationally achieved
 by executing the appropriate T-Core transformation rules (artifact (c) in
-Figure~\ref{fig:arch}), following the ordering of the rules in the DSLTrans transformation being analysed.
+Figure~\ref{fig:arch}), following the ordering of the rules in the DSLTrans transformation being analysed \cgg{I would add ``(artifact (a) in
+Figure~\ref{fig:arch})'' here.}).
 The path condition generation algorithm starts from the empty path condition,
 representing the case where no rules in the transformation have executed. Then, each rule in the DSLTrans model transformation under analysis
 is combined with the path conditions generated thus far, using a T-Core
@@ -281,17 +282,17 @@ transformations in order to exclude impossible rule combinations.
 \subsection*{5. Contract Proof}
 
 The \emph{contract proof} component requires two inputs: the \emph{path
-conditions set} built by the path condition generator (marked (d) is Figure~\ref{fig:arch}); the \emph{contract
-proof T-Core transformations} (marked (b) is Figure~\ref{fig:arch}).
-Pre- / post- condition contracts form an implication, which needs to be checked
+conditions set} built by the path condition generator (marked (d) in Figure~\ref{fig:arch}); the \emph{contract
+proof T-Core transformations} (marked (b) in Figure~\ref{fig:arch}).
+Pre-/post- condition contracts form an implication, which needs to be checked
 for each path condition provided as input to the contract proof component. For a
 contract to hold on a DSLTrans model transformation, the contract's implication
 should hold for every path condition generated for that model transformation.
 For each submodel of the path condition that is isomorphic to the
-pre-condition's model, the appropriate property T-Core matcher will try to find
+pre-condition's model, the appropriate property T-Core matcher \cgg{I would add ``from the artifact marked (b)''} will try to find
 a submodel of the path condition that is isomorphic to the post-condition's
 model. This is achieved using the contract proof T-Core transformations, which
-consist of a set of queries to path condition models.
+consist of a set of queries to path condition models \cgg{This last sentence seems redundant, provided you add an explicit reference to the artifact marked (b) above.}.
 
 % As in for the path condition generation component described in
 % Section~\ref{sec:path_cond_gen}, the contract proof algorithm has also been
