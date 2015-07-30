@@ -2,10 +2,9 @@
 
 The guiding principle of the McGill Unversity Modelling, Design, and Simulation
 Lab is that all tools and processes should be explicitly modelled at an
-appropriate abstraction level.
-This practice ensures that software development effort is targeted at the
-problem's essential complexity, while alleviating complexity
-introduced by the computational platforms used.
+appropriate abstraction level. This practice ensures that software development
+effort is targeted at the problem's essential complexity, while alleviating complexity
+induced computational platforms.
 
 %This practice goes in the direction of ensuring that essential
 %complexity is the main object of software development and that accidental
@@ -84,7 +83,9 @@ to perform the typical graph manipulation operations.
 \includegraphics[width=0.5\textwidth]{figures/tooling_arch}
 \caption{The architecture of the SyVOLT tool}
 \label{fig:arch}
+\vspace{-.5cm}
 \end{figure}
+
 
 % Elements of the architecture that could not be built using model driven tools
 % (for lack of technological availability) have been developed using model-driven
@@ -106,15 +107,16 @@ identifier. Following this numbering sequence, we will briefly visit each
 component to describe its function and the technologies employed in its development.
 
 SyVOLT's architectural components described in Figure~\ref{fig:arch} are
-orchestrated by an ANT script from within Eclipse. This script makes sure all components execute in the
-right order, provides the glue between them \cgg{I would remove the ``provides the glue between them'' clause, as it adds little meaning to the sentence and seems redundant.} and allows contract proof to run
-fully automatically at the push of a button.
+orchestrated by an ANT script from within Eclipse. This script makes sure all
+components communicate and execute in the right order, and allows contract
+proof to run fully automatically at the push of a button.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{figures/eclipse_frontend}
 \caption{The SyVOLT editor within Eclipse}
 \label{fig:eclipse_frontend}
+\vspace{-.5cm}
 \end{figure}
 
 
@@ -126,9 +128,10 @@ realized by a set of Eclipse Graphical Modeling Framework\footnote{\url{http://w
 EuGENia~\cite{Kolovos2010a}.
 
 %how it is used
-The user can prescribe contracts (the gray rectangle in the left-hand side of
-Figure~\ref{fig:eclipse_frontend}) and propositional logic properties involving
-contracts (the white rectangle in the center of the figure \cgg{There is no longer a white rectange with the propositional properties. Where did this picture go? Should we remove this clause or update the picture?}) using the toolbox (right-hand side of Figure~\ref{fig:eclipse_frontend}).
+The user can prescribe contracts (the gray, red and blue rectangle in the
+left-hand side of Figure~\ref{fig:eclipse_frontend}) and propositional logic properties involving
+contracts using the toolbox (right-hand side of
+Figure~\ref{fig:eclipse_frontend}).
 
 % what's it like internally.
 Internally, the graphical editor reads and write two models: the domain model and the graphical model.
@@ -177,12 +180,11 @@ representing a DSLTrans transformation (marked (a) in Figure~\ref{fig:arch});
 and another one to generate the T-Core model transformation rules necessary to prove
 SyVOLT contracts (marked (b) in Figure~\ref{fig:arch}).
 
-The EGL model-to-text transformations are used to parse the Ecore models of the
-DSLTrans model transformation under analysis and of the contracts to be proved \cgg{The EGL does not parse the Ecore models. Parsing is converting the concrete syntax into an abstract syntax. The Ecore models are parsed by the EMF runtime, which converts the text (xml) into a memory representation. The EGL is more like a visitor of the abstract syntax tree of the Ecore models. I would remove this sentence and start the next one as ``the EGL transformations produce...''}.
-From these Ecore models, the EGL transformations produce a number of Python
-classes that inherit from the Himesis library and that
-represent models and T-Core transformation rules. These classes will be
-subsequently loaded in memory and manipulated by the proof engine back-end.
+From the preEcore models of the DSLTrans model transformation under analysis and
+of the contracts to be proved, the EGL transformations produce a number of Python
+classes that inherit from the Himesis library and that represent models and
+T-Core transformation rules. These classes will be subsequently loaded in memory
+and manipulated by the proof engine back-end.
 
 
 % Note that all these artifacts are produced as
@@ -211,11 +213,10 @@ subsequently loaded in memory and manipulated by the proof engine back-end.
 % these are correctly generated.
 
 
-\subsection*{3. Additional Generation of T-Core Model Transformations}
+\subsection*{3. Generating Artifacts for Path Condition Generation}
 
-Additional model transformations, other than the ones described in
-Section~\ref{sec:gen_models_mt}\cgg{Unumbered sections cannot be refered to like this. Either we use ``in the previous subsection'' or we use ``2'' to refer to that section.}, need to be generated for the property proof
-algorithm to execute\cgg{In the previous section, only one model transformation was described as being generated: the dsltrans. The contract, at least in the way it is described, does not correspond to a model transformation.}. These are the \emph{path condition generation} T-Core
+Additional artifacts need to be generated for the property proof
+algorithm to execute. These are the \emph{path condition generation} T-Core
 model transformations (marked (c) in Figure~\ref{fig:arch}) that are needed to
 perform the model manipulations for a set of path conditions. These model
 transformation blocks allow combining the rules of a DSLTrans model
@@ -255,8 +256,7 @@ condition.
 Once the required artifacts have been produced, the prover moves onto the path
 condition generation step. Path condition generation is operationally achieved
 by executing the appropriate T-Core transformation rules (artifact (c) in
-Figure~\ref{fig:arch}), following the ordering of the rules in the DSLTrans transformation being analysed \cgg{I would add ``(artifact (a) in
-Figure~\ref{fig:arch})'' here.}).
+Figure~\ref{fig:arch}), following the ordering of the rules in the DSLTrans transformation being analysed.
 The path condition generation algorithm starts from the empty path condition,
 representing the case where no rules in the transformation have executed. Then, each rule in the DSLTrans model transformation under analysis
 is combined with the path conditions generated thus far, using a T-Core
@@ -289,11 +289,9 @@ for each path condition provided as input to the contract proof component. For a
 contract to hold on a DSLTrans model transformation, the contract's implication
 should hold for every path condition generated for that model transformation.
 For each submodel of the path condition that is isomorphic to the
-pre-condition's model, the appropriate property T-Core matcher \cgg{I would add ``from the artifact marked (b)''} will try to find
+pre-condition's model, the appropriate property T-Core matcher from the artifact marked (b) will try to find
 a submodel of the path condition that is isomorphic to the post-condition's
-model. This is achieved using the contract proof T-Core transformations, which
-consist of a set of queries to path condition models \cgg{This last sentence seems redundant, provided you add an explicit reference to the artifact marked (b) above.}.
-
+model. 
 % As in for the path condition generation component described in
 % Section~\ref{sec:path_cond_gen}, the contract proof algorithm has also been
 % implemented as a Python script that schedules all the property proof T-Core
