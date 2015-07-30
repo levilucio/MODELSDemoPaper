@@ -9,7 +9,7 @@
 Model transformations are at the center of model-driven development, making
 pragmatic and usable tools for their verification indispensable. In this paper
 we introduce
-SyVOLT\footnote{http://msdl.cs.mcgill.ca/people/levi/contractprover} (Symbolic Verifier of mOdeL Transformations), an Eclipse plugin that allows verifying pre-/post-condition structural contracts on model transformations. SyVOLT's operation relies on a theoretical framework that has been developed for the DSLTrans model transformation language. In this framework, pre-/post-condition contracts can be shown to either hold for all input/output pairs resulting from
+SyVOLT (Symbolic Verifier of mOdeL Transformations)~\cite{syvolt}, an Eclipse plugin that allows verifying pre-/post-condition structural contracts on model transformations. SyVOLT's operation relies on a theoretical framework that has been developed for the DSLTrans model transformation language. In this framework, pre-/post-condition contracts can be shown to either hold for all input/output pairs resulting from
 executing a given DSLTrans model transformation, or not to hold for at least
 one of those input/output pairs~\cite{Lucio2014}.
 
@@ -41,7 +41,7 @@ translate model transformations to Alloy in order to verify if given
 assertions hold for the given transformations. Both these
 approaches attempt to exhaustively verify the model transformation, as SyVOLT
 does. However, while SyVOLT guarantees that all counter-examples to a contract
-can always found, this is not granted by the two approaches introduced above.
+are always found, this is not granted by the two approaches introduced above.
 
 
 
