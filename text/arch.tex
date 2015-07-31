@@ -100,7 +100,7 @@ transformations) are synthesized from the graphical representations of the
 DSLTrans transformations and of the SyVOLT contracts, and passed to the
 back-end. In the reverse direction, the proof result and counter-examples, if
 any, are passed from the proof engine to the front-end.
-
+\newpage
 In what follows, we will briefly visit each computational component of SyVOLT to
 describe its function and the technologies employed in its development.
 
@@ -233,7 +233,7 @@ Currently, PyRamify is implemented as a Python script, as we were unable to
 implement automatic creation of higher-order artifacts (in our
 case, T-Core transformations) using graph-based model transformations.
 This indicates a need to further develop model-driven engineering tools
-that allow manipulating model transformations explicitly as models.
+that allow for the explicit manipulation of model transformations as models.
 % 
 % We have recently learned that, alternatively, \emph{path condition generation
 % transformations} could be built directly from the Ecore representation of
@@ -277,7 +277,7 @@ conditions will grow to represent all allowed rules combinations.
 The \emph{contract prover} component requires two inputs: the path
 conditions set, built by the path condition generator (marked (d) in
 Figure~\ref{fig:arch}); the contract proof T-Core transformations (marked (b) in Figure~\ref{fig:arch}).
-Pre / post- condition contracts form an implication, which needs to be checked
+Pre/post condition contracts form an implication, which needs to be checked
 for each path condition. For a contract to hold on a DSLTrans model
 transformation, the contract's implication should hold for every path condition generated for that model transformation.
 Thus, for each submodel of the path condition that is isomorphic to the

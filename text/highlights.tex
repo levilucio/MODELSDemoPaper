@@ -11,7 +11,7 @@ the pattern specified in the contract's post-condition. Contracts can
 optionally include traceability relations between input and output patterns. 
 Our technique is exhaustive and input-independent, in the sense that whenever a contract holds, it
 will hold for all possible input models for that transformation. This is possible
-because SyVOLT operates on specifications of outplace model transformations,
+because SyVOLT operates on specifications of out-place model transformations,
 where unbounded loops and model element deletions are not allowed. A discussion
 on the soundness and completeness of our approach is provided
 in~\cite{Lucio2014}.
@@ -101,6 +101,8 @@ specification. In this context, each symbolic execution -- which in the context
 of our work we call a \emph{path condition} -- is an overlapping combination
 of a subset of the transformation's rules. Because a path condition contains a
 number of rules, it represents the execution of the model transformation over any input model those rules match on.
+
+
 Contracts of interest are proved on the set of path conditions built for a
 model transformation, and are extrapolated to the infinite set of
 the model transformation's computations through an abstraction
@@ -123,7 +125,7 @@ relation~\cite{Lucio2014}.
 
 \subsection{Proving Contracts about ATL Model Transformations}
 The Atlas Transformation Language (ATL)~\cite{atlTool} is
-commonly-used in both industry and academia applications. In order to enable contract proving on ATL transformations, we
+commonly-used in both industrial and academic applications. In order to enable contract proving on ATL transformations, we
 have developed a higher-order transformation that is able to automatically
 transform declarative ATL transformations into DSLTrans transformations~\cite{Oakes}. 
 In the future we will integrate this higher-order transformation into SyVOLT's
