@@ -12,7 +12,8 @@ optionally include traceability relations between input and output patterns.
 Our technique is exhaustive and input-independent, in the sense that whenever a contract holds, it
 will hold for all possible input models for that transformation. This is possible
 because SyVOLT operates on specifications of outplace model transformations,
-where unbounded loops and model element deletions are not allowed. The approach is sound and complete, as described
+where unbounded loops and model element deletions are not allowed. A discussion
+on the soundness and completeness of our approach is provided
 in~\cite{Lucio2014}.
 
 %SyVOLT proves
@@ -28,7 +29,7 @@ such as ATL, DSLTrans~\cite{Barroca2011} and
 EGL~\cite{eglTool} are integrated with the Eclipse
 Modeling Framework (EMF)~\cite{emfTool}. To take
 advantage of this ecosystem, SyVOLT integrates with EMF to represent models in a
-multitude of syntaxes, from graphical to textual. The modeler may then operate
+multitude of syntaxes, from graphical to textual. Modellers may then operate
 in their preferred syntax, although the authors suggest the visual
 representation of a contract in the SyVOLT editor allows for intuitive
 understanding of the contract's meaning.
@@ -97,13 +98,13 @@ Our technique shares its principles with symbolic execution, a classic method to
 verify code. The underlying idea entails building a finite representation of the
 (infinite) set of computations that can be expressed by a model transformation
 specification. In this context, each symbolic execution -- which in the context
-of our work we call a \emph{path condition} -- is a combination
-of a subset of the transformation's rules.
-Because a path condition contains a number of rules, it represents the execution
-of the model transformation over any input model those rules match on.
+of our work we call a \emph{path condition} -- is an overlapping combination
+of a subset of the transformation's rules. Because a path condition contains a
+number of rules, it represents the execution of the model transformation over any input model those rules match on.
 Contracts of interest are proved on the set of path conditions built for a
 model transformation, and are extrapolated to the infinite set of
-the model transformation's computations through an abstraction relation.
+the model transformation's computations through an abstraction
+relation~\cite{Lucio2014}.
 
 % Our model transformation verification technique relies on models as the
 % means to internally represent both symbolic executions and contracts. SyVOLT
